@@ -1,0 +1,1305 @@
+[
+  {
+    "machine_id": "1",
+    "store_name": "Archer House",
+    "address": "2130 Neil Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.005202249208,
+      "lon": -83.0141113530145
+    }
+  },
+  {
+    "machine_id": "2",
+    "store_name": "Archer House",
+    "address": "2131 Neil Ave",
+    "city": "Columbus",
+    "zip": "43211",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various",
+    "location": {
+      "lat": 40.0051411675387,
+      "lon": -83.0141398031036
+    }
+  },
+  {
+    "machine_id": "3",
+    "store_name": "Baker Hall",
+    "address": "129 W. 12th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "4",
+    "store_name": "Baker Systems Engineering",
+    "address": "1971 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "DASANI",
+    "location": {
+      "lat": 83.01594,
+      "lon": 40.00187
+    }
+  },
+  {
+    "machine_id": "5",
+    "store_name": "Baker Systems Engineering",
+    "address": "1971 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 83.01594,
+      "lon": 40.00187
+    }
+  },
+  {
+    "machine_id": "6",
+    "store_name": "Barrett House",
+    "address": "88 West Woodruff Avenue",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash"
+    ],
+    "room_number": "-1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.004718439127,
+      "lon": -83.0108896444066
+    }
+  },
+  {
+    "machine_id": "7",
+    "store_name": "Bevis Hall",
+    "address": "1080 Carmack Rd",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "8",
+    "store_name": "Biological Sciences Building",
+    "address": "484 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "9",
+    "store_name": "Blackburn House",
+    "address": "120 W. Woodruff Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Dasani",
+    "location": {
+      "lat": 40.0041361730103,
+      "lon": -83.0123045955713
+    }
+  },
+  {
+    "machine_id": "10",
+    "store_name": "Blackburn House",
+    "address": "121 W. Woodruff Ave.",
+    "city": "Columbus",
+    "zip": "43211",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.0041308556699,
+      "lon": -83.012234024461
+    }
+  },
+  {
+    "machine_id": "11",
+    "store_name": "Blackburn House",
+    "address": "122 W. Woodruff Ave.",
+    "city": "Columbus",
+    "zip": "43212",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various",
+    "location": {
+      "lat": 40.0041193075926,
+      "lon": -83.0121354748097
+    }
+  },
+  {
+    "machine_id": "12",
+    "store_name": "Bradley Hall",
+    "address": "221 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "Mastercard",
+      "visa",
+      "American Express",
+      "discover",
+      "debit"
+    ],
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "13",
+    "store_name": "Bradley Hall",
+    "address": "221 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various"
+  },
+  {
+    "machine_id": "14",
+    "store_name": "Bradley Hall",
+    "address": "221 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "15",
+    "store_name": "Buckeye Village",
+    "address": "2661 Defiance Dr.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Dasani"
+  },
+  {
+    "machine_id": "16",
+    "store_name": "Canfield Hall",
+    "address": "236 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "17",
+    "store_name": "Denny Hall",
+    "address": "164 W 17th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.0013999953584,
+      "lon": -83.0122457581939
+    }
+  },
+  {
+    "machine_id": "18",
+    "store_name": "Denny Hall",
+    "address": "165 W 17th Ave",
+    "city": "Columbus",
+    "zip": "43211",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various",
+    "location": {
+      "lat": 40.0013219001335,
+      "lon": -83.0121964436054
+    }
+  },
+  {
+    "machine_id": "19",
+    "store_name": "Drackett Tower",
+    "address": "191 West Lane Avenue",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.005513878529,
+      "lon": -83.0134540371555
+    }
+  },
+  {
+    "machine_id": "20",
+    "store_name": "Drackett Tower",
+    "address": "192 West Lane Avenue",
+    "city": "Columbus",
+    "zip": "43211",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "Google Pay",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 40.0055252821043,
+      "lon": -83.0133753644641
+    }
+  },
+  {
+    "machine_id": "21",
+    "store_name": "Drackett Tower",
+    "address": "193 West Lane Avenue",
+    "city": "Columbus",
+    "zip": "43212",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "American Express",
+      "Cash"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various",
+    "location": {
+      "lat": 40.0055173353685,
+      "lon": -83.0132567277813
+    }
+  },
+  {
+    "machine_id": "22",
+    "store_name": "Fawcett Center",
+    "address": "2400 Olentangy River Rd.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "23",
+    "store_name": "Hale Hall",
+    "address": "153 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "24",
+    "store_name": "Hitchcock Hall",
+    "address": "2070 Neil Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor Bolz Hall",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 83.01528,
+      "lon": 40.00309
+    }
+  },
+  {
+    "machine_id": "25",
+    "store_name": "Houck House",
+    "address": "61 Curl Dr.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "26",
+    "store_name": "Hughes Hall",
+    "address": "1899 College Rd",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "27",
+    "store_name": "Independence Hall",
+    "address": "1923 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 83.01572,
+      "lon": 40.00043
+    }
+  },
+  {
+    "machine_id": "28",
+    "store_name": "Independence Hall",
+    "address": "1923 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 83.01572,
+      "lon": 40.00043
+    }
+  },
+  {
+    "machine_id": "29",
+    "store_name": "Independence Hall",
+    "address": "1923 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "MasterCard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Various",
+    "location": {
+      "lat": 83.01572,
+      "lon": 40.00043
+    }
+  },
+  {
+    "machine_id": "30",
+    "store_name": "Jones Tower",
+    "address": "123 West Lane Avenue",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "31",
+    "store_name": "Knowlton Hall",
+    "address": "275 W Woodruff Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "1st Floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola",
+    "location": {
+      "lat": 83.01622,
+      "lon": 40.00357
+    }
+  },
+  {
+    "machine_id": "32",
+    "store_name": "Lazenby Hall",
+    "address": "1827 Neil Ave Mall",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "33",
+    "store_name": "Lincoln Tower",
+    "address": "1800 Cannon Dr.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "34",
+    "store_name": "Mack Hall",
+    "address": "1698 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "35",
+    "store_name": "Mendoza House",
+    "address": "194 W. Woodruff Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "36",
+    "store_name": "Morrill Tower",
+    "address": "1900 Cannon Dr.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "37",
+    "store_name": "Morrison Tower",
+    "address": "196 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210-1379",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "38",
+    "store_name": "Neil Building",
+    "address": "1578 Neil Avenue",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "39",
+    "store_name": "Norton House",
+    "address": "2114 Neil Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "40",
+    "store_name": "Nosker House",
+    "address": "136 W. Woodruff Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "41",
+    "store_name": "Park-Stradley Hall",
+    "address": "120 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID"
+    ],
+    "room_number": "181",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Various, Coca Cola"
+  },
+  {
+    "machine_id": "42",
+    "store_name": "Park-Stradley Hall",
+    "address": "120 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash"
+    ],
+    "room_number": "181",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "43",
+    "store_name": "Paterson Hall",
+    "address": "191 W. 12th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "visa",
+      "Apple Pay",
+      "discover",
+      "mastercard",
+      "google pay",
+      "American Express"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Various, Coca Cola"
+  },
+  {
+    "machine_id": "44",
+    "store_name": "Paterson Hall",
+    "address": "191 W. 12th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "CASH",
+      "BuckID"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "45",
+    "store_name": "Paterson Hall",
+    "address": "191 W. 12th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "mastercard",
+      "visa",
+      "American Express",
+      "discover"
+    ],
+    "room_number": "1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various"
+  },
+  {
+    "machine_id": "46",
+    "store_name": "Physical Activities & Education Services (PAES)",
+    "address": "305 W 17th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "47",
+    "store_name": "Postle Hall",
+    "address": "305 W 12th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "48",
+    "store_name": "Science and Engineering Library (SEL)",
+    "address": "175 W. 18th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Temporarily Unavailable",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "cash"
+    ],
+    "room_number": "By elevator on 1st floor",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "49",
+    "store_name": "Science and Engineering Library (SEL)",
+    "address": "175 W. 18th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "visa",
+      "Apple Pay",
+      "discover",
+      "mastercard",
+      "google pay",
+      "American Express"
+    ],
+    "room_number": "By elevator on 1st floor",
+    "services": [
+      "water"
+    ],
+    "provider": "Dasani"
+  },
+  {
+    "machine_id": "50",
+    "store_name": "Science and Engineering Library (SEL)",
+    "address": "175 W. 18th Ave",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "mastercard",
+      "visa",
+      "American Express",
+      "discover"
+    ],
+    "room_number": "By elevator on 1st floor",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various"
+  },
+  {
+    "machine_id": "51",
+    "store_name": "Scott Laboratory",
+    "address": "201 W. 19th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Temporarily Unavailable",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "Mastercard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor Student Lounge",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "52",
+    "store_name": "Scott Laboratory",
+    "address": "201 W. 19th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Temporarily Unavailable",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "BuckID",
+      "Visa",
+      "Apple Pay",
+      "Discover",
+      "Mastercard",
+      "GooglePay",
+      "AmEx"
+    ],
+    "room_number": "1st Floor Student Lounge",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "53",
+    "store_name": "Siebert Hall",
+    "address": "184 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "54",
+    "store_name": "Smith-Steeb Hall",
+    "address": "92 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "visa",
+      "Apple Pay",
+      "discover",
+      "mastercard",
+      "google pay",
+      "American Express",
+      "BuckID"
+    ],
+    "room_number": "181",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "55",
+    "store_name": "Smith-Steeb Hall",
+    "address": "92 W. 11th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "visa",
+      "Apple Pay",
+      "discover",
+      "mastercard",
+      "google pay",
+      "American Express",
+      "BuckID"
+    ],
+    "room_number": "181",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Dasani, various"
+  },
+  {
+    "machine_id": "56",
+    "store_name": "Taylor Tower",
+    "address": "55 West Lane Avenue",
+    "city": "Columbus",
+    "zip": "43210-1196",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "57",
+    "store_name": "University Hall",
+    "address": "230 N Oval Mall",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "VISA",
+      "BuckID",
+      "Apple Pay",
+      "discover",
+      "Mastercard",
+      "Google pay",
+      "American Express",
+      "debit"
+    ],
+    "room_number": "051",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola"
+  },
+  {
+    "machine_id": "58",
+    "store_name": "University Hall",
+    "address": "230 N Oval Mall",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "VISA",
+      "Apple Pay",
+      "discover",
+      "Mastercard",
+      "BuckID",
+      "Google pay",
+      "American Express",
+      "debit"
+    ],
+    "room_number": "051",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Vitamin water, Minute Maid lemonade, Dasani water"
+  },
+  {
+    "machine_id": "59",
+    "store_name": "University Hall",
+    "address": "230 N Oval Mall",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "debit",
+      "VISA",
+      "Apple Pay",
+      "discover",
+      "Mastercard",
+      "Google pay",
+      "American Express",
+      "union pay",
+      "BuckID"
+    ],
+    "room_number": "051",
+    "services": [
+      "drinks"
+    ],
+    "provider": "Coca Cola, various"
+  },
+  {
+    "machine_id": "60",
+    "store_name": "University Hall",
+    "address": "230 N Oval Mall",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "payment_methods": [
+      "Cash",
+      "debit",
+      "Mastercard",
+      "visa",
+      "American Express",
+      "discover"
+    ],
+    "room_number": "051",
+    "services": [
+      "snacks"
+    ],
+    "provider": "Various"
+  },
+  {
+    "machine_id": "61",
+    "store_name": "Vet Med Academic Building",
+    "address": "1900 Coffey Road",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "West Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "62",
+    "store_name": "Watts Hall",
+    "address": "2041 College Rd",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "North Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  },
+  {
+    "machine_id": "63",
+    "store_name": "Worthington Building",
+    "address": "249 W. 10th Ave.",
+    "city": "Columbus",
+    "zip": "43210",
+    "campus": "South Campus (Columbus)",
+    "status": "Normal",
+    "special_access": false,
+    "rating": 0,
+    "room_number": "nan",
+    "provider": "nan"
+  }
+]
