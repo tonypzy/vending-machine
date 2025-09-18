@@ -13,7 +13,7 @@ COLS = {
     "City": "City",
     "Zip": "Zip",
     "Campus": "Campus",
-    "Status": "Status"
+    "Status": "Status",
     "SpecialAccess": "SpecialAccess",
     "Rating": "Rating",
     "PaymentMethod": "PaymentMethod",
