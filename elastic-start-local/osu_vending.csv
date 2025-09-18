@@ -1,0 +1,64 @@
+﻿MachineID,Store Name,Address,City,Zip,Campus,Offers Delivery?,Accepts Meal Plans?,Status,SpecialAccess,Rating,PaymentMethod,RoomNumber,Long,Lat,ServiceProvidedWithPrice,Provider,Picture
+1,Archer House,2130 Neil Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01411135,40.00520225,drinks,Coca Cola,
+,Archer House,2131 Neil Ave,Columbus,43211,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/American Express/Cash ,1st floor,-83.0141398,40.00514117,snacks,Various,
+2,Baker Hall,129 W. 12th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
+3,Baker Systems Engineering,1971 Neil Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Cash/BuckID/Visa/Apple Pay/Discover/MasterCard/Google Pay/AmEx,1st Floor,40.00187,83.01594,Drinks,DASANI,Picture
+,Baker Systems Engineering,1971 Neil Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Cash/Visa/Apple Pay/Discover/MasterCard/Google Pay/AmEx,1st Floor,40.00187,83.01594,Drinks,Coca Cola,Picture
+4,Barrett House,88 West Woodruff Avenue,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Cash,-1st floor,-83.01088964,40.00471844,drinks,Coca Cola,
+5,Bevis Hall,1080 Carmack Rd,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+6,Biological Sciences Building,484 W 12th Ave,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+7,Blackburn House,120 W. Woodruff Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.0123046,40.00413617,drinks,Dasani,
+,Blackburn House,121 W. Woodruff Ave.,Columbus,43211,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01223402,40.00413086,drinks,Coca Cola,
+,Blackburn House,122 W. Woodruff Ave.,Columbus,43212,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/American Express/Cash ,1st floor,-83.01213547,40.00411931,snacks,Various,
+8,Bradley Hall,221 W 12th Ave,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,"Cash, Mastercard, visa, American Express, discover, debit ",,,,,,
+,Bradley Hall,221 W 12th Ave,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,"39.99667° N, 83.01359° W",,Snacks,Various,Picture
+,Bradley Hall,221 W 12th Ave,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,"39.99667° N, 83.01359° W",,Drinks,Coca Cola,Picture
+9,Buckeye Village,2661 Defiance Dr.,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,1st floor,"39.99667° N, 83.01359° W",,Drinks,Dasani,Picture
+10,Canfield Hall,236 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
+11,Denny Hall,164 W 17th Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01224576,40.0014,drinks,Coca Cola,
+,Denny Hall,165 W 17th Ave,Columbus,43211,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01219644,40.0013219,snacks,Various,
+12,Drackett Tower,191 West Lane Avenue,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01345404,40.00551388,drinks,Coca Cola,
+,Drackett Tower,192 West Lane Avenue,Columbus,43211,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/Google Pay/American Express/Cash ,1st floor,-83.01337536,40.00552528,drinks,Coca Cola,
+,Drackett Tower,193 West Lane Avenue,Columbus,43212,North Campus (Columbus),No,No,Normal,FALSE,,Visa/Apple Pay/Discover/MasterCard/American Express/Cash ,1st floor,-83.01325673,40.00551734,snacks,Various,
+13,Fawcett Center,2400 Olentangy River Rd.,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+14,Hale Hall,153 W 12th Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+15,Hitchcock Hall,2070 Neil Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Cash/BuckID/Visa/Apple Pay/Discover/MasterCard/GooglePay/AmEx,1st Floor Bolz Hall,40.00309,83.01528,Drinks,Coca Cola,Picture
+16,Houck House,61 Curl Dr.,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+17,Hughes Hall,1899 College Rd,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+18,Independence Hall,1923 Neil Ave.,Columbus,43210,West Campus (Columbus),No,No,Normal,FALSE,,Cash/BuckID/Visa/Apple Pay/Discover/MasterCard/GooglePay/AmEx,1st Floor,40.00043,83.01572,Drinks,Coca Cola,Picture
+,Independence Hall,1923 Neil Ave.,Columbus,43210,West Campus (Columbus),No,No,Normal,FALSE,,Cash/BuckID/Visa/Apple Pay/Discover/MasterCard/GooglePay/AmEx,1st Floor,40.00043,83.01572,Drinks,Coca Cola,Picture
+,Independence Hall,1923 Neil Ave.,Columbus,43210,West Campus (Columbus),No,No,Normal,FALSE,,Cash/BuckID/Visa/Apple Pay/Discover/MasterCard/GooglePay/AmEx,1st Floor,40.00043,83.01572,Drinks,Various,Picture
+19,Jones Tower,123 West Lane Avenue,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+20,Knowlton Hall,275 W Woodruff Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,,1st Floor,40.00357,83.01622,Drinks,Coca Cola,
+21,Lazenby Hall,1827 Neil Ave Mall,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+22,Lincoln Tower,1800 Cannon Dr.,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+23,Mack Hall,1698 Neil Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
+24,Mendoza House,194 W. Woodruff Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+25,Morrill Tower,1900 Cannon Dr.,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+26,Morrison Tower,196 W. 11th Ave.,Columbus,43210-1379,South Campus (Columbus),No,No,Normal,,,,,,,,,
+27,Neil Building,1578 Neil Avenue,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
+28,Norton House,2114 Neil Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+29,Nosker House,136 W. Woodruff Ave.,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+,Park-Stradley Hall,120 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash/BuckID,181,"39.99578° N, 83.01033° W",,Drinks,"Various, Coca Cola",Picture
+30,Park-Stradley Hall,120 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash,181,"39.99578° N, 83.01033° W",,Drinks,Coca Cola,Picture
+31,Paterson Hall,191 W. 12th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash/visa/Apple Pay/discover/mastercard/google pay/American Express,1st floor,"39.99642° N, 83.01244° W",,Drinks,"Various, Coca Cola",Picture
+,Paterson Hall,191 W. 12th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,CASH/BuckID,1st floor,"39.99640° N, 83.01239° W",,Drinks,Coca Cola,Picture
+,Paterson Hall,191 W. 12th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash/mastercard/visa/American Express/discover,1st floor,"39.99639° N, 83.01239° W",,Snacks,Various,Picture
+32,Physical Activities & Education Services (PAES),305 W 17th Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+33,Postle Hall,305 W 12th Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+,Science and Engineering Library (SEL),175 W. 18th Ave,Columbus,43210,North Campus (Columbus),No,No,Temporarily Unavailable,FALSE,,cash,By elevator on 1st floor,"40.00181° N, 83.01327° W",,Drinks,Coca Cola,Picture
+,Science and Engineering Library (SEL),175 W. 18th Ave,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,Cash/visa/Apple Pay/discover/mastercard/google pay/American Express,By elevator on 1st floor,"40.00181° N, 83.01327° W",,Water,Dasani,Picture
+34,Science and Engineering Library (SEL),175 W. 18th Ave,Columbus,43210,South Campus (Columbus),No,No,Normal,FALSE,,Cash/mastercard/visa/American Express/discover,By elevator on 1st floor,"40.00181° N, 83.01327° W",,Snacks,Various,Picture
+35,Scott Laboratory,201 W. 19th Ave.,Columbus,43210,North Campus (Columbus),No,No,Temporarily Unavailable,TRUE,,Cash/BuckID/Visa/Apple Pay/Discover/Mastercard/GooglePay/AmEx,1st Floor Student Lounge,"40.00268° N, 83.01394° W",,Drinks,Coca Cola,Picture
+,Scott Laboratory,201 W. 19th Ave.,Columbus,43210,North Campus (Columbus),No,No,Temporarily Unavailable,TRUE,,Cash/BuckID/Visa/Apple Pay/Discover/Mastercard/GooglePay/AmEx,1st Floor Student Lounge,"40.00268° N, 83.01394° W",,Drinks,Coca Cola,Picture
+36,Siebert Hall,184 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
+37,Smith-Steeb Hall,92 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash/visa/Apple Pay/discover/mastercard/google pay/American Express/BuckID,181,"39.99583° N, 83.00924° W",,Drinks,Coca Cola,Picture
+,Smith-Steeb Hall,92 W. 11th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,TRUE,,Cash/visa/Apple Pay/discover/mastercard/google pay/American Express/BuckID,181,"39.99583° N, 83.00924° W",,Drinks,"Dasani, various",Picture
+38,Taylor Tower,55 West Lane Avenue,Columbus,43210-1196,North Campus (Columbus),No,No,Normal,,,,,,,,,
+39,University Hall,230 N Oval Mall,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,"VISA, BuckID, Apple Pay, discover, Mastercard, Google pay, American Express, debit",051,"40.00069° N, 83.01448° W",,Drinks,Coca Cola,Picture
+,University Hall,230 N Oval Mall,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,"VISA, Apple Pay, discover, Mastercard, BuckID, Google pay, American Express, debit",051,"40.00069° N, 83.01448° W",,Drinks,"Vitamin water, Minute Maid lemonade, Dasani water",Picture
+,University Hall,230 N Oval Mall,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,"Cash, debit, VISA, Apple Pay, discover, Mastercard, Google pay, American Express, union pay, BuckID",051,"40.00069° N, 83.01448° W",,Drinks,"Coca Cola, various",Picture
+,University Hall,230 N Oval Mall,Columbus,43210,North Campus (Columbus),No,No,Normal,FALSE,,"Cash, debit, Mastercard, visa, American Express, discover",051,"40.00077° N, 83.01448° W",,Snacks,Various,Picture
+40,Vet Med Academic Building,1900 Coffey Road,Columbus,43210,West Campus (Columbus),No,No,Normal,,,,,,,,,
+41,Watts Hall,2041 College Rd,Columbus,43210,North Campus (Columbus),No,No,Normal,,,,,,,,,
+42,Worthington Building,249 W. 10th Ave.,Columbus,43210,South Campus (Columbus),No,No,Normal,,,,,,,,,
