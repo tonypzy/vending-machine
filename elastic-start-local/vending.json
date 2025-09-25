@@ -24,8 +24,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.005202249208,
-      "lon": -83.0141113530145
+      "lat": -83.0141113530145,
+      "lon": 40.005202249208
     }
   },
   {
@@ -52,8 +52,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": 40.0051411675387,
-      "lon": -83.0141398031036
+      "lat": -83.0141398031036,
+      "lon": 40.0051411675387
     }
   },
   {
@@ -67,7 +67,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0106359522906,
+      "lon": 39.9966562529028
+    }
   },
   {
     "machine_id": "4",
@@ -95,7 +99,7 @@
     ],
     "provider": "DASANI",
     "location": {
-      "lat": 83.01594,
+      "lat": -83.01594,
       "lon": 40.00187
     }
   },
@@ -124,7 +128,7 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 83.01594,
+      "lat": -83.01594,
       "lon": 40.00187
     }
   },
@@ -147,8 +151,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.004718439127,
-      "lon": -83.0108896444066
+      "lat": -83.0108896444066,
+      "lon": 40.004718439127
     }
   },
   {
@@ -162,7 +166,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0380813336471,
+      "lon": 40.0028715579655
+    }
   },
   {
     "machine_id": "8",
@@ -175,7 +183,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0205670047577,
+      "lon": 39.996555675639
+    }
   },
   {
     "machine_id": "9",
@@ -202,8 +214,8 @@
     ],
     "provider": "Dasani",
     "location": {
-      "lat": 40.0041361730103,
-      "lon": -83.0123045955713
+      "lat": -83.0123045955713,
+      "lon": 40.0041361730103
     }
   },
   {
@@ -231,8 +243,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.0041308556699,
-      "lon": -83.012234024461
+      "lat": -83.012234024461,
+      "lon": 40.0041308556699
     }
   },
   {
@@ -259,8 +271,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": 40.0041193075926,
-      "lon": -83.0121354748097
+      "lat": -83.0121354748097,
+      "lon": 40.0041193075926
     }
   },
   {
@@ -282,7 +294,11 @@
       "debit"
     ],
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.01359,
+      "lon": 39.99667
+    }
   },
   {
     "machine_id": "13",
@@ -307,7 +323,11 @@
     "services": [
       "snacks"
     ],
-    "provider": "Various"
+    "provider": "Various",
+    "location": {
+      "lat": -83.01359,
+      "lon": 39.99667
+    }
   },
   {
     "machine_id": "14",
@@ -332,7 +352,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01359,
+      "lon": 39.99667
+    }
   },
   {
     "machine_id": "15",
@@ -348,7 +372,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Dasani"
+    "provider": "Dasani",
+    "location": {
+      "lat": -83.01359,
+      "lon": 39.99667
+    }
   },
   {
     "machine_id": "16",
@@ -361,7 +389,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0136858473182,
+      "lon": 39.9959288082976
+    }
   },
   {
     "machine_id": "17",
@@ -388,8 +420,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.0013999953584,
-      "lon": -83.0122457581939
+      "lat": -83.0122457581939,
+      "lon": 40.0013999953584
     }
   },
   {
@@ -417,8 +449,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": 40.0013219001335,
-      "lon": -83.0121964436054
+      "lat": -83.0121964436054,
+      "lon": 40.0013219001335
     }
   },
   {
@@ -446,8 +478,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.005513878529,
-      "lon": -83.0134540371555
+      "lat": -83.0134540371555,
+      "lon": 40.005513878529
     }
   },
   {
@@ -475,8 +507,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 40.0055252821043,
-      "lon": -83.0133753644641
+      "lat": -83.0133753644641,
+      "lon": 40.0055252821043
     }
   },
   {
@@ -503,8 +535,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": 40.0055173353685,
-      "lon": -83.0132567277813
+      "lat": -83.0132567277813,
+      "lon": 40.0055173353685
     }
   },
   {
@@ -518,7 +550,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0207627792823,
+      "lon": 40.0107989152003
+    }
   },
   {
     "machine_id": "23",
@@ -531,7 +567,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0116840116616,
+      "lon": 39.9965716935689
+    }
   },
   {
     "machine_id": "24",
@@ -559,7 +599,7 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 83.01528,
+      "lat": -83.01528,
       "lon": 40.00309
     }
   },
@@ -574,7 +614,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0109729520302,
+      "lon": 40.005461088067
+    }
   },
   {
     "machine_id": "26",
@@ -587,7 +631,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0107382957974,
+      "lon": 40.0011725040807
+    }
   },
   {
     "machine_id": "27",
@@ -615,7 +663,7 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 83.01572,
+      "lat": -83.01572,
       "lon": 40.00043
     }
   },
@@ -645,7 +693,7 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 83.01572,
+      "lat": -83.01572,
       "lon": 40.00043
     }
   },
@@ -675,7 +723,7 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": 83.01572,
+      "lat": -83.01572,
       "lon": 40.00043
     }
   },
@@ -690,7 +738,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.011959365948,
+      "lon": 40.0054214224139
+    }
   },
   {
     "machine_id": "31",
@@ -708,7 +760,7 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": 83.01622,
+      "lat": -83.01622,
       "lon": 40.00357
     }
   },
@@ -723,7 +775,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0157079653388,
+      "lon": 39.9987377027466
+    }
   },
   {
     "machine_id": "33",
@@ -736,7 +792,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0222546686921,
+      "lon": 39.9988375815687
+    }
   },
   {
     "machine_id": "34",
@@ -749,7 +809,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0143528548106,
+      "lon": 39.9959222362371
+    }
   },
   {
     "machine_id": "35",
@@ -762,7 +826,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.013518481182,
+      "lon": 40.0055481413495
+    }
   },
   {
     "machine_id": "36",
@@ -775,20 +843,28 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0220362691335,
+      "lon": 40.0003230069066
+    }
   },
   {
     "machine_id": "37",
     "store_name": "Morrison Tower",
     "address": "196 W. 11th Ave.",
     "city": "Columbus",
-    "zip": "43210-1379",
+    "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0127969082917,
+      "lon": 39.9959871066981
+    }
   },
   {
     "machine_id": "38",
@@ -801,7 +877,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0140327234448,
+      "lon": 39.9939875945453
+    }
   },
   {
     "machine_id": "39",
@@ -814,7 +894,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0138763951724,
+      "lon": 40.0049568341179
+    }
   },
   {
     "machine_id": "40",
@@ -827,7 +911,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.01255333933,
+      "lon": 40.0043808546701
+    }
   },
   {
     "machine_id": "41",
@@ -847,7 +935,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Various, Coca Cola"
+    "provider": "Various, Coca Cola",
+    "location": {
+      "lat": -83.01033,
+      "lon": 39.99578
+    }
   },
   {
     "machine_id": "42",
@@ -866,7 +958,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01033,
+      "lon": 39.99578
+    }
   },
   {
     "machine_id": "43",
@@ -891,7 +987,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Various, Coca Cola"
+    "provider": "Various, Coca Cola",
+    "location": {
+      "lat": -83.01244,
+      "lon": 39.99642
+    }
   },
   {
     "machine_id": "44",
@@ -911,7 +1011,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01239,
+      "lon": 39.9964
+    }
   },
   {
     "machine_id": "45",
@@ -934,7 +1038,11 @@
     "services": [
       "snacks"
     ],
-    "provider": "Various"
+    "provider": "Various",
+    "location": {
+      "lat": -83.01239,
+      "lon": 39.99639
+    }
   },
   {
     "machine_id": "46",
@@ -947,7 +1055,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0181573815431,
+      "lon": 39.9997105637678
+    }
   },
   {
     "machine_id": "47",
@@ -960,7 +1072,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0163938389569,
+      "lon": 39.9961446542933
+    }
   },
   {
     "machine_id": "48",
@@ -979,7 +1095,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01327,
+      "lon": 40.00181
+    }
   },
   {
     "machine_id": "49",
@@ -1004,7 +1124,11 @@
     "services": [
       "water"
     ],
-    "provider": "Dasani"
+    "provider": "Dasani",
+    "location": {
+      "lat": -83.01327,
+      "lon": 40.00181
+    }
   },
   {
     "machine_id": "50",
@@ -1027,7 +1151,11 @@
     "services": [
       "snacks"
     ],
-    "provider": "Various"
+    "provider": "Various",
+    "location": {
+      "lat": -83.01327,
+      "lon": 40.00181
+    }
   },
   {
     "machine_id": "51",
@@ -1053,7 +1181,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01394,
+      "lon": 40.00268
+    }
   },
   {
     "machine_id": "52",
@@ -1079,7 +1211,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01394,
+      "lon": 40.00268
+    }
   },
   {
     "machine_id": "53",
@@ -1092,7 +1228,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0123132687787,
+      "lon": 39.9957417971406
+    }
   },
   {
     "machine_id": "54",
@@ -1118,7 +1258,11 @@
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.00924,
+      "lon": 39.99583
+    }
   },
   {
     "machine_id": "55",
@@ -1144,20 +1288,28 @@
     "services": [
       "drinks"
     ],
-    "provider": "Dasani, various"
+    "provider": "Dasani, various",
+    "location": {
+      "lat": -83.00924,
+      "lon": 39.99583
+    }
   },
   {
     "machine_id": "56",
     "store_name": "Taylor Tower",
     "address": "55 West Lane Avenue",
     "city": "Columbus",
-    "zip": "43210-1196",
+    "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": 83.0107335381072,
+      "lon": 40.0058415241142
+    }
   },
   {
     "machine_id": "57",
@@ -1179,11 +1331,15 @@
       "American Express",
       "debit"
     ],
-    "room_number": "051",
+    "room_number": "51",
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola"
+    "provider": "Coca Cola",
+    "location": {
+      "lat": -83.01448,
+      "lon": 40.00069
+    }
   },
   {
     "machine_id": "58",
@@ -1205,11 +1361,15 @@
       "American Express",
       "debit"
     ],
-    "room_number": "051",
+    "room_number": "51",
     "services": [
       "drinks"
     ],
-    "provider": "Vitamin water, Minute Maid lemonade, Dasani water"
+    "provider": "Vitamin water, Minute Maid lemonade, Dasani water",
+    "location": {
+      "lat": -83.01448,
+      "lon": 40.00069
+    }
   },
   {
     "machine_id": "59",
@@ -1233,11 +1393,15 @@
       "union pay",
       "BuckID"
     ],
-    "room_number": "051",
+    "room_number": "51",
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola, various"
+    "provider": "Coca Cola, various",
+    "location": {
+      "lat": -83.01448,
+      "lon": 40.00069
+    }
   },
   {
     "machine_id": "60",
@@ -1257,11 +1421,15 @@
       "American Express",
       "discover"
     ],
-    "room_number": "051",
+    "room_number": "51",
     "services": [
       "snacks"
     ],
-    "provider": "Various"
+    "provider": "Various",
+    "location": {
+      "lat": -83.01448,
+      "lon": 40.00077
+    }
   },
   {
     "machine_id": "61",
@@ -1274,20 +1442,11 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
-  },
-  {
-    "machine_id": "62",
-    "store_name": "Watts Hall",
-    "address": "2041 College Rd",
-    "city": "Columbus",
-    "zip": "43210",
-    "campus": "North Campus (Columbus)",
-    "status": "Normal",
-    "special_access": false,
-    "rating": 0,
-    "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0266313526469,
+      "lon": 39.9996748636217
+    }
   },
   {
     "machine_id": "63",
@@ -1300,6 +1459,10 @@
     "special_access": false,
     "rating": 0,
     "room_number": "nan",
-    "provider": "nan"
+    "provider": "nan",
+    "location": {
+      "lat": -83.0138227662835,
+      "lon": 39.9943639542706
+    }
   }
 ]
