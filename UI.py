@@ -48,7 +48,9 @@ def home():
     </style>
 </head>
 <body>
-<h1>Vend-nier</h1>
+<h1>
+    <span style="font-size: 1.5em;">Vend-nier</span>: Find vending machines "nier" you
+</h1>
 <div class="container">
     <div class="form-container">
         <form method="POST">
