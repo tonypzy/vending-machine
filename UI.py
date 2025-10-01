@@ -1,9 +1,152 @@
 from flask import Flask, render_template_string, request
 import requests
 import polyline
+import os
+import json
 
 app = Flask(__name__)
 
+ES_URL = os.getenv("ES_URL", "http://localhost:9200")
+ES_INDEX = os.getenv("ES_INDEX", "vending_machines_v1")
+
+# ES Config
+def es_search(payload: dict):
+    """
+    封装：POST _search
+    
+    """
+    url = f"{ES_URL}/{ES_INDEX}/_search"
+    headers = {"Content-Type": "application/json"}
+    # auth=("user","pass")
+    resp = requests.post(
+    url,
+    headers=headers,
+    data=json.dumps(payload),
+    timeout=10,
+    auth=("elastic", "gQgCrx0I")  
+)
+
+    resp.raise_for_status()
+    return resp.json()
+
+# Search API
+@app.route("/api/machines/search", methods=["GET"])
+def machines_search():
+    """
+
+    """
+    args = request.args
+
+    try:
+        from_ = int(args.get("from", 0))
+    except ValueError:
+        from_ = 0
+    try:
+        size = int(args.get("size", 20))
+    except ValueError:
+        size = 20
+
+    def parse_multi(name):
+        raw = args.get(name)
+        if not raw:
+            return []
+        return [x.strip().lower() for x in raw.split(",") if x.strip()]
+
+    services = parse_multi("services")            # snacks,drinks
+    payments = parse_multi("payment_methods")     # visa,apple pay
+    providers = parse_multi("provider")           # coca cola,various
+
+
+    campus = args.get("campus")
+    zip_code = args.get("zip")
+    status = args.get("status")
+    special_access = args.get("special_access")   # true/false
+
+    q = args.get("q")
+    must = []
+    filters = []
+    if q:
+        must.append({
+            "bool": {
+                "should": [
+                    {"match": {"store_name": {"query": q}}},
+                    {"match": {"address": {"query": q}}}
+                ],
+                "minimum_should_match": 1
+            }
+        })
+
+    if services:
+        filters.append({"terms": {"services": services}})
+
+    if payments:
+        filters.append({"terms": {"payment_methods": payments}})
+
+    if providers:
+        filters.append({"terms": {"provider": providers}})
+
+    if campus:
+        filters.append({"term": {"campus": campus}})
+    if zip_code:
+        filters.append({"term": {"zip": zip_code}})
+    if status:
+        filters.append({"term": {"status": status}})
+
+    if special_access is not None:
+        val = special_access
+        if isinstance(val, str):
+            val_norm = val.strip().lower()
+            if val_norm in ("true", "1", "yes"):
+                val = True
+            elif val_norm in ("false", "0", "no"):
+                val = False
+        filters.append({"term": {"special_access": val}})
+
+    query = {
+        "bool": {
+            "must": must if must else [{"match_all": {}}],
+            "filter": filters
+        }
+    }
+
+    payload = {
+        "from": from_,
+        "size": size,
+        "query": query,
+        "_source": [
+            "machine_id","store_name","address","city","zip","campus","status",
+            "special_access","rating","payment_methods","room_number",
+            "services","provider","location"
+        ]
+    }
+
+    try:
+        data = es_search(payload)
+        hits = data.get("hits", {}).get("hits", [])
+        total = data.get("hits", {}).get("total", {})
+        results = [
+            {
+                "id": h.get("_id"),
+                "score": h.get("_score"),
+                **(h.get("_source") or {})
+            }
+            for h in hits
+        ]
+        return {
+            "ok": True,
+            "total": total.get("value", 0),
+            "from": from_,
+            "size": size,
+            "results": results
+        }
+    except requests.HTTPError as e:
+        return {"ok": False, "error": f"ES HTTP error: {e.response.text}"}, 502
+    except Exception as e:
+        return {"ok": False, "error": str(e)}, 500
+    
+
+    
+# Map API Key (free tier)
 ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImNlY2ZiOTY3M2ViYzQwM2ViNDlkMDQ5MWJiODFhNDJhIiwiaCI6Im11cm11cjY0In0="
 
 @app.route("/", methods=["GET", "POST"])
@@ -35,7 +178,6 @@ def home():
     }
     </style>
 
-
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         .container { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -45,6 +187,11 @@ def home():
         button, select { padding: 8px 12px; font-size: 16px; }
         #directions { margin-top: 10px; max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
         #directions li { cursor: pointer; }
+
+        #search-results h2 { margin: 12px 0 6px; }
+        .result-card { border:1px solid #ccc; padding:8px; margin-bottom:8px; border-radius:4px; }
+        .muted { color:#666; font-size: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:999px; background:#eee; margin-right:4px; font-size:12px; }
     </style>
 </head>
 <body>
@@ -102,6 +249,12 @@ def home():
 
     </div>
 
+    <!-- results return -->
+    <div id="search-results" style="margin-top:20px;">
+      <h2>Search Results</h2>
+      <div id="results-list">Click Submit to load results...</div>
+    </div>
+
     <div class="map-container">
         <div id="map" style="height: 500px; width: 100%;"></div>
         
@@ -111,7 +264,7 @@ def home():
 <script>
 function toggleBuildings() {
     const yesRadio = document.querySelector('input[name="special_access"][value="Yes"]');
-    document.getElementById("building_group").style.display = yesRadio.checked ? "block" : "none";
+    document.getElementById("building_group").style.display = yesRadio && yesRadio.checked ? "block" : "none";
 }
 
 window.onload = function() {
@@ -165,6 +318,111 @@ window.onload = function() {
     } else {
         fetchRoute(defaultLat, defaultLon);
     }
+
+    // ======= display the search results =======
+
+    // search parameters from the form
+    function buildSearchQuery() {
+      const p = new URLSearchParams();
+
+      // keyword
+      const qInput = document.getElementById('q');
+      if (qInput && qInput.value.trim()) {
+        p.set('q', qInput.value.trim());
+      }
+
+      // payment_methods
+      const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked'))
+        .map(i => i.value.toLowerCase());
+      if (pm.length) p.set('payment_methods', pm.join(','));
+
+      // services
+      const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+        .map(i => i.value.toLowerCase());
+      if (svcs.length) p.set('services', svcs.join(','));
+
+      // provider
+      const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked'))
+        .map(i => i.value.toLowerCase());
+      if (prov.length) p.set('provider', prov.join(','));
+
+      // special_access: Yes/No -> true/false
+      const sa = document.querySelector('input[name="special_access"]:checked');
+      if (sa) p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
+
+      // set pages
+      p.set('from', '0');
+      p.set('size', '200');
+
+      return p.toString();
+    }
+
+    // render the page
+    function renderResults(list, total) {
+      const container = document.getElementById('results-list');
+      if (!container) return;
+
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div class="muted">No results found.</div>';
+        return;
+      }
+
+      const html = `
+        <div class="muted" style="margin-bottom:6px;">Total: ${total}</div>
+        ${list.map(item => {
+          const services = Array.isArray(item.services) ? item.services : (item.services || []);
+          const payments = Array.isArray(item.payment_methods) ? item.payment_methods : (item.payment_methods || []);
+          const pillsS = services.map(s => '<span class="pill">'+s+'</span>').join(' ');
+          const pillsP = payments.map(s => '<span class="pill">'+s+'</span>').join(' ');
+          return `
+            <div class="result-card">
+              <div><b>${item.store_name || 'Unknown'}</b></div>
+              <div class="muted">${item.address || ''}</div>
+              <div>Provider: ${item.provider || '-'}</div>
+              <div>Services: ${pillsS || '-'}</div>
+              <div>Payment: ${pillsP || '-'}</div>
+              <div>Status: ${item.status || '-'}</div>
+            </div>
+          `;
+        }).join('')}
+      `;
+      container.innerHTML = html;
+    }
+
+    // get the backend api
+    async function runSearchAndShow() {
+      const qs  = buildSearchQuery();
+      const url = '/api/machines/search' + (qs ? ('?' + qs) : '');
+      try {
+        const resp = await fetch(url);
+        const data = await resp.json();
+        if (!resp.ok || !data.ok) {
+          console.error('Search failed:', data);
+          const container = document.getElementById('results-list');
+          if (container) container.innerHTML = '<div style="color:red;">' + (data && data.error ? data.error : 'Search failed') + '</div>';
+          return;
+        }
+        renderResults(data.results, data.total);
+      } catch (e) {
+        console.error('Search error:', e);
+        const container = document.getElementById('results-list');
+        if (container) container.innerHTML = '<div style="color:red;">Search error: ' + e + '</div>';
+      }
+    }
+
+    // catch the form submit event
+    const formEl = document.querySelector('form');
+    if (formEl) {
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault();   
+        runSearchAndShow();  
+      });
+    }
+
+    // search without conditions with the page is firsr loaded
+    runSearchAndShow();
+
+    // ======= render finished =======
 };
 
 </script>
@@ -178,7 +436,8 @@ window.onload = function() {
     selected_buildings=selected_buildings,
     latitude=latitude,
     longitude=longitude
-    )
+)
+
 
 @app.route("/route", methods=["POST"])
 def route():
