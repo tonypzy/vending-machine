@@ -69,7 +69,7 @@ def build_query(selected_choices, selected_services, selected_providers, special
     body = {
         "size": 100,
         "_source": [
-            "machine_id", "store_name", "address", "city", "zip", "campus",
+            "machine_id.keyword", "store_name", "address", "city", "zip", "campus",
             "status", "payment_methods", "services", "provider", "room_number", "location"
         ],
         "query": {
@@ -79,7 +79,7 @@ def build_query(selected_choices, selected_services, selected_providers, special
         },
         "sort": [
             {"store_name.keyword": "asc"},
-            {"machine_id": "asc"}
+            {"machine_id.keyword": "asc"}
         ]
     }
     return body
@@ -287,4 +287,3 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
