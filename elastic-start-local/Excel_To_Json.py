@@ -119,4 +119,4 @@ with open(OUT_NDJSON, "w", encoding="utf-8") as f:
         f.write(json.dumps(meta, ensure_ascii=False) + "\n")
         f.write(json.dumps(d, ensure_ascii=False) + "\n")
 
-print(f"✅ 输出完成：{OUT_JSON} 与 {OUT_NDJSON}（{len(docs)} 条）")
+print(f"Done! {OUT_JSON} and {OUT_NDJSON}（{len(docs)} entries）")
