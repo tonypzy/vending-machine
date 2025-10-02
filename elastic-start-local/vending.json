@@ -15,7 +15,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -24,8 +24,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.0141113530145,
-      "lon": 40.005202249208
+      "lat": -83.01411135,
+      "lon": 40.00520225
     }
   },
   {
@@ -43,7 +43,7 @@
       "Apple Pay",
       "Discover",
       "MasterCard",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -52,8 +52,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": -83.0141398031036,
-      "lon": 40.0051411675387
+      "lat": -83.0141398,
+      "lon": 40.00514117
     }
   },
   {
@@ -64,13 +64,19 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0106359522906,
-      "lon": 39.9966562529028
+      "lat": -83.01063595,
+      "lon": 39.99665625
     }
   },
   {
@@ -143,16 +149,17 @@
     "special_access": false,
     "rating": 0,
     "payment_methods": [
-      "Cash"
+      "Cash",
+      "BuckID"
     ],
-    "room_number": "-1st floor",
+    "room_number": "1st floor",
     "services": [
       "drinks"
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.0108896444066,
-      "lon": 40.004718439127
+      "lat": -83.01088964,
+      "lon": 40.00471844
     }
   },
   {
@@ -165,11 +172,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0380813336471,
-      "lon": 40.0028715579655
+      "lat": -83.03808133,
+      "lon": 40.00287156
     }
   },
   {
@@ -182,11 +195,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0205670047577,
-      "lon": 39.996555675639
+      "lat": -83.020567,
+      "lon": 39.99655568
     }
   },
   {
@@ -205,7 +224,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -214,8 +233,8 @@
     ],
     "provider": "Dasani",
     "location": {
-      "lat": -83.0123045955713,
-      "lon": 40.0041361730103
+      "lat": -83.0123046,
+      "lon": 40.00413617
     }
   },
   {
@@ -234,7 +253,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -243,8 +262,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.012234024461,
-      "lon": 40.0041308556699
+      "lat": -83.01223402,
+      "lon": 40.00413086
     }
   },
   {
@@ -262,7 +281,7 @@
       "Apple Pay",
       "Discover",
       "MasterCard",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -271,8 +290,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": -83.0121354748097,
-      "lon": 40.0041193075926
+      "lat": -83.01213547,
+      "lon": 40.00411931
     }
   },
   {
@@ -283,18 +302,20 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
       "Mastercard",
       "visa",
-      "American Express",
-      "discover",
-      "debit"
+      "AmEx",
+      "Discover"
     ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
       "lat": -83.01359,
       "lon": 39.99667
@@ -308,7 +329,7 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Visa",
@@ -316,7 +337,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -337,7 +358,7 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Visa",
@@ -345,7 +366,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -368,6 +389,9 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "1st floor",
     "services": [
       "drinks"
@@ -388,11 +412,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0136858473182,
-      "lon": 39.9959288082976
+      "lat": -83.01368585,
+      "lon": 39.99592881
     }
   },
   {
@@ -411,7 +441,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -420,8 +450,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.0122457581939,
-      "lon": 40.0013999953584
+      "lat": -83.01224576,
+      "lon": 40.0014
     }
   },
   {
@@ -440,7 +470,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -449,8 +479,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": -83.0121964436054,
-      "lon": 40.0013219001335
+      "lat": -83.01219644,
+      "lon": 40.0013219
     }
   },
   {
@@ -469,7 +499,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -478,8 +508,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.0134540371555,
-      "lon": 40.005513878529
+      "lat": -83.01345404,
+      "lon": 40.00551388
     }
   },
   {
@@ -498,7 +528,7 @@
       "Discover",
       "MasterCard",
       "Google Pay",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -507,8 +537,8 @@
     ],
     "provider": "Coca Cola",
     "location": {
-      "lat": -83.0133753644641,
-      "lon": 40.0055252821043
+      "lat": -83.01337536,
+      "lon": 40.00552528
     }
   },
   {
@@ -526,7 +556,7 @@
       "Apple Pay",
       "Discover",
       "MasterCard",
-      "American Express",
+      "AmEx",
       "Cash"
     ],
     "room_number": "1st floor",
@@ -535,8 +565,8 @@
     ],
     "provider": "Various",
     "location": {
-      "lat": -83.0132567277813,
-      "lon": 40.0055173353685
+      "lat": -83.01325673,
+      "lon": 40.00551734
     }
   },
   {
@@ -549,11 +579,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0207627792823,
-      "lon": 40.0107989152003
+      "lat": -83.02076278,
+      "lon": 40.01079892
     }
   },
   {
@@ -566,11 +602,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0116840116616,
-      "lon": 39.9965716935689
+      "lat": -83.01168401,
+      "lon": 39.99657169
     }
   },
   {
@@ -613,11 +655,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0109729520302,
-      "lon": 40.005461088067
+      "lat": -83.01097295,
+      "lon": 40.00546109
     }
   },
   {
@@ -630,11 +678,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0107382957974,
-      "lon": 40.0011725040807
+      "lat": -83.0107383,
+      "lon": 40.0011725
     }
   },
   {
@@ -735,13 +789,19 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.011959365948,
-      "lon": 40.0054214224139
+      "lat": -83.01195937,
+      "lon": 40.00542142
     }
   },
   {
@@ -754,6 +814,9 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "1st Floor",
     "services": [
       "drinks"
@@ -774,11 +837,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0157079653388,
-      "lon": 39.9987377027466
+      "lat": -83.01570797,
+      "lon": 39.9987377
     }
   },
   {
@@ -789,13 +858,19 @@
     "zip": "43210",
     "campus": "West Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0222546686921,
-      "lon": 39.9988375815687
+      "lat": -83.02225467,
+      "lon": 39.99883758
     }
   },
   {
@@ -808,11 +883,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0143528548106,
-      "lon": 39.9959222362371
+      "lat": -83.01435285,
+      "lon": 39.99592224
     }
   },
   {
@@ -825,11 +906,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.013518481182,
-      "lon": 40.0055481413495
+      "lat": -83.01351848,
+      "lon": 40.00554814
     }
   },
   {
@@ -840,13 +927,19 @@
     "zip": "43210",
     "campus": "West Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0220362691335,
-      "lon": 40.0003230069066
+      "lat": -83.02203627,
+      "lon": 40.00032301
     }
   },
   {
@@ -859,11 +952,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0127969082917,
-      "lon": 39.9959871066981
+      "lat": -83.01279691,
+      "lon": 39.99598711
     }
   },
   {
@@ -876,11 +975,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0140327234448,
-      "lon": 39.9939875945453
+      "lat": -83.01403272,
+      "lon": 39.99398759
     }
   },
   {
@@ -891,13 +996,19 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0138763951724,
-      "lon": 40.0049568341179
+      "lat": -83.0138764,
+      "lon": 40.00495683
     }
   },
   {
@@ -908,13 +1019,19 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.01255333933,
-      "lon": 40.0043808546701
+      "lat": -83.01255334,
+      "lon": 40.00438085
     }
   },
   {
@@ -925,17 +1042,17 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
       "BuckID"
     ],
-    "room_number": "181",
+    "room_number": "Room 181",
     "services": [
       "drinks"
     ],
-    "provider": "Various, Coca Cola",
+    "provider": "Various",
     "location": {
       "lat": -83.01033,
       "lon": 39.99578
@@ -949,12 +1066,13 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
-      "Cash"
+      "Cash",
+      "BuckID"
     ],
-    "room_number": "181",
+    "room_number": "Room 181",
     "services": [
       "drinks"
     ],
@@ -972,22 +1090,22 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
       "visa",
       "Apple Pay",
-      "discover",
-      "mastercard",
-      "google pay",
-      "American Express"
+      "Discover",
+      "Mastercard",
+      "Google Pay",
+      "AmEx"
     ],
     "room_number": "1st floor",
     "services": [
       "drinks"
     ],
-    "provider": "Various, Coca Cola",
+    "provider": "Various",
     "location": {
       "lat": -83.01244,
       "lon": 39.99642
@@ -1001,10 +1119,10 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
-      "CASH",
+      "Cash",
       "BuckID"
     ],
     "room_number": "1st floor",
@@ -1025,14 +1143,14 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "mastercard",
-      "visa",
-      "American Express",
-      "discover"
+      "Mastercard",
+      "Visa",
+      "AmEx",
+      "Discover"
     ],
     "room_number": "1st floor",
     "services": [
@@ -1052,13 +1170,19 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0181573815431,
-      "lon": 39.9997105637678
+      "lat": -83.01815738,
+      "lon": 39.99971056
     }
   },
   {
@@ -1071,11 +1195,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0163938389569,
-      "lon": 39.9961446542933
+      "lat": -83.01639384,
+      "lon": 39.99614465
     }
   },
   {
@@ -1089,7 +1219,8 @@
     "special_access": false,
     "rating": 0,
     "payment_methods": [
-      "cash"
+      "Cash",
+      "BuckID"
     ],
     "room_number": "By elevator on 1st floor",
     "services": [
@@ -1113,16 +1244,16 @@
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "visa",
+      "Visa",
       "Apple Pay",
-      "discover",
-      "mastercard",
-      "google pay",
-      "American Express"
+      "Discover",
+      "Mastercard",
+      "Google Pay",
+      "AmEx"
     ],
     "room_number": "By elevator on 1st floor",
     "services": [
-      "water"
+      "drinks"
     ],
     "provider": "Dasani",
     "location": {
@@ -1142,10 +1273,10 @@
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "mastercard",
-      "visa",
-      "American Express",
-      "discover"
+      "Mastercard",
+      "Visa",
+      "AmEx",
+      "Discover"
     ],
     "room_number": "By elevator on 1st floor",
     "services": [
@@ -1165,7 +1296,7 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Temporarily Unavailable",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
@@ -1195,7 +1326,7 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Temporarily Unavailable",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
@@ -1227,11 +1358,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0123132687787,
-      "lon": 39.9957417971406
+      "lat": -83.01231327,
+      "lon": 39.9957418
     }
   },
   {
@@ -1242,19 +1379,19 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "visa",
+      "Visa",
       "Apple Pay",
-      "discover",
-      "mastercard",
-      "google pay",
-      "American Express",
+      "Discover",
+      "Mastercard",
+      "Google Pay",
+      "AmEx",
       "BuckID"
     ],
-    "room_number": "181",
+    "room_number": "Room 181",
     "services": [
       "drinks"
     ],
@@ -1272,23 +1409,23 @@
     "zip": "43210",
     "campus": "South Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "visa",
+      "Visa",
       "Apple Pay",
-      "discover",
-      "mastercard",
-      "google pay",
-      "American Express",
+      "Discover",
+      "Mastercard",
+      "Google Pay",
+      "AmEx",
       "BuckID"
     ],
-    "room_number": "181",
+    "room_number": "Room 181",
     "services": [
       "drinks"
     ],
-    "provider": "Dasani, various",
+    "provider": "Various",
     "location": {
       "lat": -83.00924,
       "lon": 39.99583
@@ -1302,13 +1439,19 @@
     "zip": "43210",
     "campus": "North Campus (Columbus)",
     "status": "Normal",
-    "special_access": false,
+    "special_access": true,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": 83.0107335381072,
-      "lon": 40.0058415241142
+      "lat": 83.01073354,
+      "lon": 40.00584152
     }
   },
   {
@@ -1322,16 +1465,15 @@
     "special_access": false,
     "rating": 0,
     "payment_methods": [
-      "VISA",
+      "Visa",
       "BuckID",
       "Apple Pay",
-      "discover",
+      "Discover",
       "Mastercard",
-      "Google pay",
-      "American Express",
-      "debit"
+      "Google Pay",
+      "AmEx"
     ],
-    "room_number": "51",
+    "room_number": "Room 51",
     "services": [
       "drinks"
     ],
@@ -1352,20 +1494,19 @@
     "special_access": false,
     "rating": 0,
     "payment_methods": [
-      "VISA",
+      "Visa",
       "Apple Pay",
-      "discover",
+      "Discover",
       "Mastercard",
       "BuckID",
-      "Google pay",
-      "American Express",
-      "debit"
+      "Google Pay",
+      "AmEx"
     ],
-    "room_number": "51",
+    "room_number": "Room 51",
     "services": [
       "drinks"
     ],
-    "provider": "Vitamin water, Minute Maid lemonade, Dasani water",
+    "provider": "Vitamin, Minute Maid, Dasani",
     "location": {
       "lat": -83.01448,
       "lon": 40.00069
@@ -1383,21 +1524,20 @@
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "debit",
-      "VISA",
+      "Visa",
       "Apple Pay",
-      "discover",
+      "Discover",
       "Mastercard",
-      "Google pay",
-      "American Express",
-      "union pay",
+      "Google Pay",
+      "AmEx",
+      "Union Pay",
       "BuckID"
     ],
-    "room_number": "51",
+    "room_number": "Room 51",
     "services": [
       "drinks"
     ],
-    "provider": "Coca Cola, various",
+    "provider": "Various",
     "location": {
       "lat": -83.01448,
       "lon": 40.00069
@@ -1415,13 +1555,12 @@
     "rating": 0,
     "payment_methods": [
       "Cash",
-      "debit",
       "Mastercard",
-      "visa",
-      "American Express",
-      "discover"
+      "Visa",
+      "AmEx",
+      "Discover"
     ],
-    "room_number": "51",
+    "room_number": "Room 51",
     "services": [
       "snacks"
     ],
@@ -1441,15 +1580,21 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0266313526469,
-      "lon": 39.9996748636217
+      "lat": -83.02663135,
+      "lon": 39.99967486
     }
   },
   {
-    "machine_id": "63",
+    "machine_id": "62",
     "store_name": "Worthington Building",
     "address": "249 W. 10th Ave.",
     "city": "Columbus",
@@ -1458,11 +1603,17 @@
     "status": "Normal",
     "special_access": false,
     "rating": 0,
+    "payment_methods": [
+      "BuckID"
+    ],
     "room_number": "nan",
-    "provider": "nan",
+    "services": [
+      "other"
+    ],
+    "provider": "UNKNOWN",
     "location": {
-      "lat": -83.0138227662835,
-      "lon": 39.9943639542706
+      "lat": -83.01382277,
+      "lon": 39.99436395
     }
   }
 ]
