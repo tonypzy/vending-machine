@@ -120,6 +120,5 @@
 {"machine_id": "60", "store_name": "University Hall", "address": "230 N Oval Mall", "city": "Columbus", "zip": "43210", "campus": "North Campus (Columbus)", "status": "Normal", "special_access": false, "rating": 0, "payment_methods": ["Cash", "debit", "Mastercard", "visa", "American Express", "discover"], "room_number": "51", "services": ["snacks"], "provider": "Various", "location": {"lat": -83.01448, "lon": 40.00077}}
 {"index": {"_index": "vending_machines", "_id": "61"}}
 {"machine_id": "61", "store_name": "Vet Med Academic Building", "address": "1900 Coffey Road", "city": "Columbus", "zip": "43210", "campus": "West Campus (Columbus)", "status": "Normal", "special_access": false, "rating": 0, "room_number": "nan", "provider": "nan", "location": {"lat": -83.0266313526469, "lon": 39.9996748636217}}
-{"index": {"_index": "vending_machines", "_id": "62"}}
-{"machine_id": "62", "store_name": "Worthington Building", "address": "249 W. 10th Ave.", "city": "Columbus", "zip": "43210", "campus": "South Campus (Columbus)", "status": "Normal", "special_access": false, "rating": 0, "room_number": "nan", "provider": "nan", "location": {"lat": -83.0138227662835, "lon": 39.9943639542706}}
-
+{"index": {"_index": "vending_machines", "_id": "63"}}
+{"machine_id": "63", "store_name": "Worthington Building", "address": "249 W. 10th Ave.", "city": "Columbus", "zip": "43210", "campus": "South Campus (Columbus)", "status": "Normal", "special_access": false, "rating": 0, "room_number": "nan", "provider": "nan", "location": {"lat": -83.0138227662835, "lon": 39.9943639542706}}
