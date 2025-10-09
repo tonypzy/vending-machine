@@ -26,7 +26,7 @@ def _normalize_ui_values(selected_services, selected_providers):
     service_map = {
         'drinks': 'drinks',
         'snacks': 'snacks',
-        'water': 'water'  # 你的索引里也出现过 'water'
+        'water': 'water' 
     }
     provider_alias = {
         'coca cola': 'coca cola',
@@ -35,7 +35,7 @@ def _normalize_ui_values(selected_services, selected_providers):
         'vitamin water': 'vitamin water',
         'vitaminwater': 'vitamin water',
         'various': 'various',
-        'dassani': 'dasani',  # 小错别字兜底
+        'dassani': 'dasani',  
     }
 
     norm_services = []
@@ -51,7 +51,6 @@ def _normalize_ui_values(selected_services, selected_providers):
 
 def build_query(selected_choices, selected_services, selected_providers, special_access, selected_buildings):
     must_filters = []
-    # 只查正常状态
     must_filters.append({"term": {"status.keyword": "Normal"}})
 
     if selected_choices:
@@ -62,10 +61,8 @@ def build_query(selected_choices, selected_services, selected_providers, special
         must_filters.append({"terms": {"provider.keyword": selected_providers}})
 
     if special_access == "Yes" and selected_buildings:
-        # 你前端“Buildings”即 ES 里的 store_name
         must_filters.append({"terms": {"store_name.keyword": selected_buildings}})
 
-    # 这里只做结构化过滤；如果想让关键词搜索“地址/楼名”，可以加 multi_match
     body = {
         "size": 100,
         "_source": [
@@ -91,10 +88,8 @@ def _fix_ll(lat, lon):
     """
     if lat is None or lon is None:
         return None
-    # 自动交换
     if abs(lat) > 90 and abs(lon) <= 90:
         lat, lon = lon, lat
-    # 俄亥俄州附近的大致范围（哥伦布）：lat 39~41, lon -84~-82
     if not (39 <= lat <= 41 and -84 <= lon <= -82):
         return None
     return (lat, lon)

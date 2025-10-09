@@ -7,7 +7,9 @@ import json
 app = Flask(__name__)
 
 ES_URL = os.getenv("ES_URL", "http://localhost:9200")
-ES_INDEX = os.getenv("ES_INDEX", "vending_machines_v1")
+ES_INDEX = os.getenv("ES_INDEX", "vending_machines")
+ES_USER = os.getenv("ES_USER")  # 若有安全，设置这两个
+ES_PASS = os.getenv("ES_PASS")
 
 # ES Config
 def es_search(payload: dict):
@@ -23,7 +25,7 @@ def es_search(payload: dict):
     headers=headers,
     data=json.dumps(payload),
     timeout=10,
-    auth=("elastic", "gQgCrx0I")  
+    auth=(ES_USER, ES_PASS)  
 )
 
     resp.raise_for_status()
@@ -157,9 +159,10 @@ def home():
     special_access = request.form.get("special_access")
     selected_buildings = request.form.getlist("buildings") if special_access == "Yes" else []
 
-    latitude = 40.001
+    latitude = 40.001  # OSU Campus default
     longitude = -83.015
 
+    # NOTE: Only the HTML/JavaScript below has changed.
     return render_template_string("""
 <!DOCTYPE html>
 <html>
@@ -168,28 +171,16 @@ def home():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        border: 5px solid #8B0000;  /* dark red */
-        box-sizing: border-box; /* ensures padding is inside the border */
-    }
-    </style>
-
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
+        body { font-family: Arial, sans-serif; padding: 20px; border: 5px solid #8B0000; box-sizing: border-box; }
         .container { display: flex; gap: 20px; flex-wrap: wrap; }
         .form-container { flex: 1; min-width: 300px; }
-        .map-container { flex: 1; min-width: 400px; }
+        .map-container { flex: 2; min-width: 400px; } /* Made map wider */
         .checkbox-group { margin-bottom: 20px; }
         button, select { padding: 8px 12px; font-size: 16px; }
-        #directions { margin-top: 10px; max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
-        #directions li { cursor: pointer; }
-
         #search-results h2 { margin: 12px 0 6px; }
-        .result-card { border:1px solid #ccc; padding:8px; margin-bottom:8px; border-radius:4px; }
+        .result-card { border:1px solid #ccc; padding:8px; margin-bottom:8px; border-radius:4px; cursor: pointer; }
+        .result-card:hover { background-color: #f0f0f0; }
         .muted { color:#666; font-size: 12px; }
         .pill { display:inline-block; padding:2px 8px; border-radius:999px; background:#eee; margin-right:4px; font-size:12px; }
     </style>
@@ -201,70 +192,108 @@ def home():
 <div class="container">
     <div class="form-container">
         <form method="POST">
-    <div style="display: flex; gap: 40px; flex-wrap: wrap;">
-        <!-- First column: Payment Methods -->
-        <div style="flex: 1; min-width: 200px;">
-            <p><b>Payment Methods</b></p>
-            <div class="checkbox-group">
-                {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','American Express','Cash','BuckID'] %}
-                    <input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}<br>
-                {% endfor %}
+            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                    <p><b>Payment Methods</b></p>
+                    <div class="checkbox-group">
+                        {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','American Express','Cash','BuckID'] %}
+                            <input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}<br>
+                        {% endfor %}
+                    </div>
+                    <p><b>Special Access?</b></p>
+                    <div class="checkbox-group">
+                        <input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes
+                        <input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No
+                    </div>
+                    <div id="building_group" class="checkbox-group" style="display:none;">
+                        <p><b>Select Buildings</b></p>
+                        {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
+                            <input type="checkbox" name="buildings" value="{{ building }}" {% if building in selected_buildings %}checked{% endif %}> {{ building }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <p><b>Services</b></p>
+                    <div class="checkbox-group">
+                        {% for service in ['Drinks','Snacks'] %}
+                            <input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}<br>
+                        {% endfor %}
+                    </div>
+                    <p><b>Providers</b></p>
+                    <div class="checkbox-group">
+                        {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
+                            <input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-            <p><b>Special Access?</b></p>
-            <div class="checkbox-group">
-                <input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes
-                <input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No
-            </div>
+            <button type="submit" style="margin-top: 20px;">Submit</button>
+        </form>
 
-            <div id="building_group" class="checkbox-group" style="display:none;">
-                <p><b>Select Buildings</b></p>
-                {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
-                    <input type="checkbox" name="buildings" value="{{ building }}" {% if building in selected_buildings %}checked{% endif %}> {{ building }}<br>
-                {% endfor %}
-            </div>
+        <div id="search-results" style="margin-top:20px;">
+            <h2>Search Results</h2>
+            <div id="results-list">Click Submit to load results...</div>
         </div>
-
-        <!-- Second column: Services, Providers, Special Access -->
-        <div style="flex: 1; min-width: 200px;">
-            <p><b>Services</b></p>
-            <div class="checkbox-group">
-                {% for service in ['Drinks','Snacks'] %}
-                    <input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}<br>
-                {% endfor %}
-            </div>
-
-            <p><b>Providers</b></p>
-            <div class="checkbox-group">
-                {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
-                    <input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}<br>
-                {% endfor %}
-            </div>
-
-            
-        </div>
-    </div>
-
-    <button type="submit" style="margin-top: 20px;">Submit</button>
-</form>
-
-    </div>
-
-    <!-- results return -->
-    <div id="search-results" style="margin-top:20px;">
-      <h2>Search Results</h2>
-      <div id="results-list">Click Submit to load results...</div>
     </div>
 
     <div class="map-container">
-        <div id="map" style="height: 500px; width: 100%;"></div>
-        
+        <div id="map" style="height: 600px; width: 100%;"></div>
     </div>
 </div>
 
 <script>
+// ======== NEW: Global variables for map state ========
+let map;
+let userMarker;
+let routeLine;
+let vendingMarkersLayer; // A layer to hold all vending machine markers
+let userLocation = null; // To store user's coordinates
+
 function toggleBuildings() {
     const yesRadio = document.querySelector('input[name="special_access"][value="Yes"]');
     document.getElementById("building_group").style.display = yesRadio && yesRadio.checked ? "block" : "none";
+}
+
+// ======== NEW: Function to pan the map to a marker ========
+function panToMarker(lat, lon, openPopup) {
+    if (!map) return;
+    map.setView([lat, lon], 17); // Zoom in closer
+    // Bonus: find the marker and open its popup
+    vendingMarkersLayer.eachLayer(function(layer) {
+        if (layer.getLatLng().lat == lat && layer.getLatLng().lng == lon) {
+             if(openPopup) layer.openPopup();
+        }
+    });
+}
+
+// ======== NEW: Function to fetch a route to a SPECIFIC destination ========
+async function fetchRouteTo(endLat, endLon) {
+    if (!userLocation) {
+        alert("Your location is not available yet. Please wait.");
+        return;
+    }
+
+    const startLon = userLocation.longitude;
+    const startLat = userLocation.latitude;
+
+    const res = await fetch("/route", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ start: [startLon, startLat], end: [endLon, endLat] })
+    });
+    const data = await res.json();
+
+    if (data.coordinates) {
+        // Remove old route line if it exists
+        if (routeLine) {
+            map.removeLayer(routeLine);
+        }
+        const latlngs = data.coordinates.map(c => [c[1], c[0]]);
+        routeLine = L.polyline(latlngs, { color: 'blue', weight: 5, opacity: 0.7 }).addTo(map);
+
+        // Fit map to the route bounds
+        map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
+    }
 }
 
 window.onload = function() {
@@ -272,110 +301,112 @@ window.onload = function() {
 
     const defaultLat = {{ latitude }};
     const defaultLon = {{ longitude }};
-    const vendingLat = 40.00520225;
-    const vendingLon = -83.01411135;
 
-    const map = L.map('map');
+    map = L.map('map').setView([defaultLat, defaultLon], 14);
+    vendingMarkersLayer = L.featureGroup().addTo(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const vendingMarker = L.marker([vendingLat, vendingLon]).addTo(map).bindPopup("Vending Machine");
-    let startMarker;
-
-    async function fetchRoute(startLat, startLon) {
-        // Add "You" marker
-        if (startMarker) map.removeLayer(startMarker);
-        startMarker = L.marker([startLat, startLon]).addTo(map).bindPopup("You");
-
-        const res = await fetch("/route", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({start: [startLon, startLat], end: [vendingLon, vendingLat]})
-        });
-        const data = await res.json();
-
-        if (data.coordinates) {
-            const latlngs = data.coordinates.map(c => [c[1], c[0]]);
-            const routeLine = L.polyline(latlngs, {color:'blue', weight:5, opacity:0.7}).addTo(map);
-
-            // Include all markers in bounds
-            const bounds = L.latLngBounds(latlngs);
-            bounds.extend([startLat, startLon]);
-            bounds.extend([vendingLat, vendingLon]);
-
-            map.fitBounds(bounds, {padding: [50, 50]});  // ensures all points and route are visible
-        }
-    }
-
+    // Get user's location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            pos => fetchRoute(pos.coords.latitude, pos.coords.longitude),
-            () => fetchRoute(defaultLat, defaultLon),
-            { enableHighAccuracy: true, maximumAge: 0, timeout: 10000 }
+            pos => {
+                userLocation = pos.coords; // Store user location
+                if (userMarker) map.removeLayer(userMarker);
+                userMarker = L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
+                    .bindPopup("<b>You are here</b>").openPopup();
+                map.setView([userLocation.latitude, userLocation.longitude], 15);
+                runSearchAndShow(); // Run search after getting location
+            },
+            () => {
+                // On failure, use default and run search
+                userLocation = { latitude: defaultLat, longitude: defaultLon };
+                if (userMarker) map.removeLayer(userMarker);
+                userMarker = L.marker([defaultLat, defaultLon]).addTo(map)
+                    .bindPopup("<b>Your approximate location</b>");
+                runSearchAndShow();
+            },
+            { enableHighAccuracy: true }
         );
     } else {
-        fetchRoute(defaultLat, defaultLon);
+        // Geolocation not supported
+        userLocation = { latitude: defaultLat, longitude: defaultLon };
+        runSearchAndShow();
     }
-
-    // ======= display the search results =======
 
     // search parameters from the form
     function buildSearchQuery() {
-      const p = new URLSearchParams();
+        const p = new URLSearchParams();
+        const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked')).map(i => i.value.toLowerCase());
+        if (pm.length) p.set('payment_methods', pm.join(','));
+        const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(i => i.value.toLowerCase());
+        if (svcs.length) p.set('services', svcs.join(','));
+        const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked')).map(i => i.value.toLowerCase());
+        if (prov.length) p.set('provider', prov.join(','));
+        const sa = document.querySelector('input[name="special_access"]:checked');
+        if (sa) p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
+        p.set('from', '0');
+        p.set('size', '200'); // Get more results for the map
+        return p.toString();
+    }
+    
+    // ======== MODIFIED: This function now also updates the map markers ========
+    function renderMapMarkers(list) {
+        // Clear all previous vending machine markers
+        vendingMarkersLayer.clearLayers();
 
-      // keyword
-      const qInput = document.getElementById('q');
-      if (qInput && qInput.value.trim()) {
-        p.set('q', qInput.value.trim());
-      }
+        if (!list || list.length === 0) return;
 
-      // payment_methods
-      const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked'))
-        .map(i => i.value.toLowerCase());
-      if (pm.length) p.set('payment_methods', pm.join(','));
+        list.forEach(item => {
+            if (item.location && item.location.lat && item.location.lon) {
+                const lat = item.location.lat;
+                const lon = item.location.lon;
 
-      // services
-      const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked'))
-        .map(i => i.value.toLowerCase());
-      if (svcs.length) p.set('services', svcs.join(','));
+                // Create a popup with a "Get Directions" button
+                const popupContent = `
+                    <b>${item.store_name || 'Unknown'}</b><br>
+                    ${item.address || ''}<br>
+                    <button onclick="fetchRouteTo(${lat}, ${lon})">Get Directions</button>
+                `;
 
-      // provider
-      const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked'))
-        .map(i => i.value.toLowerCase());
-      if (prov.length) p.set('provider', prov.join(','));
-
-      // special_access: Yes/No -> true/false
-      const sa = document.querySelector('input[name="special_access"]:checked');
-      if (sa) p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
-
-      // set pages
-      p.set('from', '0');
-      p.set('size', '200');
-
-      return p.toString();
+                const marker = L.marker([lat, lon])
+                    .bindPopup(popupContent);
+                
+                // Add the new marker to our dedicated layer
+                marker.addTo(vendingMarkersLayer);
+            }
+        });
+        
+        // Adjust map to show all markers, if any were added
+        if (vendingMarkersLayer.getLayers().length > 0) {
+            map.fitBounds(vendingMarkersLayer.getBounds(), { padding: [50, 50] });
+        }
     }
 
     // render the page
     function renderResults(list, total) {
       const container = document.getElementById('results-list');
       if (!container) return;
-
       if (!list || list.length === 0) {
         container.innerHTML = '<div class="muted">No results found.</div>';
         return;
       }
-
       const html = `
         <div class="muted" style="margin-bottom:6px;">Total: ${total}</div>
         ${list.map(item => {
-          const services = Array.isArray(item.services) ? item.services : (item.services || []);
-          const payments = Array.isArray(item.payment_methods) ? item.payment_methods : (item.payment_methods || []);
-          const pillsS = services.map(s => '<span class="pill">'+s+'</span>').join(' ');
-          const pillsP = payments.map(s => '<span class="pill">'+s+'</span>').join(' ');
+          // ======== MODIFIED: Added onclick to pan the map ========
+          const lat = item.location ? item.location.lat : null;
+          const lon = item.location ? item.location.lon : null;
+
+          const services = Array.isArray(item.services) ? item.services : [];
+          const payments = Array.isArray(item.payment_methods) ? item.payment_methods : [];
+          const pillsS = services.map(s => `<span class="pill">${s}</span>`).join(' ');
+          const pillsP = payments.map(s => `<span class="pill">${s}</span>`).join(' ');
+
           return `
-            <div class="result-card">
+            <div class="result-card" onclick="panToMarker(${lat}, ${lon}, true)">
               <div><b>${item.store_name || 'Unknown'}</b></div>
               <div class="muted">${item.address || ''}</div>
               <div>Provider: ${item.provider || '-'}</div>
@@ -398,19 +429,18 @@ window.onload = function() {
         const data = await resp.json();
         if (!resp.ok || !data.ok) {
           console.error('Search failed:', data);
-          const container = document.getElementById('results-list');
-          if (container) container.innerHTML = '<div style="color:red;">' + (data && data.error ? data.error : 'Search failed') + '</div>';
+          document.getElementById('results-list').innerHTML = `<div style="color:red;">${data.error || 'Search failed'}</div>`;
           return;
         }
+        // ======== MODIFIED: Now call both render functions ========
         renderResults(data.results, data.total);
+        renderMapMarkers(data.results);
       } catch (e) {
         console.error('Search error:', e);
-        const container = document.getElementById('results-list');
-        if (container) container.innerHTML = '<div style="color:red;">Search error: ' + e + '</div>';
+        document.getElementById('results-list').innerHTML = `<div style="color:red;">Search error: ${e}</div>`;
       }
     }
 
-    // catch the form submit event
     const formEl = document.querySelector('form');
     if (formEl) {
       formEl.addEventListener('submit', function (e) {
@@ -419,10 +449,7 @@ window.onload = function() {
       });
     }
 
-    // search without conditions with the page is firsr loaded
-    runSearchAndShow();
-
-    // ======= render finished =======
+    // Initial search is now triggered after geolocation is determined.
 };
 
 </script>
