@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 ES_URL = os.getenv("ES_URL", "http://localhost:9200")
 ES_INDEX = os.getenv("ES_INDEX", "vending_machines")
-ES_USER = os.getenv("ES_USER")
-ES_PASS = os.getenv("ES_PASS")
+ES_USER = os.getenv("ES_USER", "elastic")
+ES_PASS = os.getenv("ES_PASS", "Ayr1nLfT")
 
 # ES Config
 def es_search(payload: dict):
@@ -156,7 +156,7 @@ def home():
     selected_buildings = request.form.getlist("buildings") if special_access == "Yes" else []
 
     latitude = 40.001
-    longitude = -83.015
+    longitude = 0
 
     return render_template(
         "index.html",

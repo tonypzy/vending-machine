@@ -437,31 +437,41 @@ body {
             }).addTo(map);
 
             // Get user's location
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    pos => {
-                        userLocation = pos.coords; // Store user location
-                        if (userMarker) map.removeLayer(userMarker);
-                        userMarker = L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
-                            .bindPopup("<b>You are here</b>").openPopup();
-                        map.setView([userLocation.latitude, userLocation.longitude], 15);
-                        runSearchAndShow(); // Run search after getting location
-                    },
-                    () => {
-                        // On failure, use default and run search
-                        userLocation = { latitude: defaultLat, longitude: defaultLon };
-                        if (userMarker) map.removeLayer(userMarker);
-                        userMarker = L.marker([defaultLat, defaultLon]).addTo(map)
-                            .bindPopup("<b>Your approximate location</b>");
-                        runSearchAndShow();
-                    },
-                    { enableHighAccuracy: true }
-                );
-            } else {
-                // Geolocation not supported
-                userLocation = { latitude: defaultLat, longitude: defaultLon };
-                runSearchAndShow();
-            }
+            // Get user's location
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        pos => {
+            userLocation = pos.coords; // Store user location
+            if (userMarker) map.removeLayer(userMarker);
+            userMarker = L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
+                .bindPopup("<b>You are here</b>").openPopup();
+            map.setView([userLocation.latitude, userLocation.longitude], 15);
+
+            // ❌ Remove this:
+            // runSearchAndShow(); 
+        },
+        () => {
+            // On failure, use default and show location
+            userLocation = { latitude: defaultLat, longitude: defaultLon };
+            if (userMarker) map.removeLayer(userMarker);
+            userMarker = L.marker([defaultLat, defaultLon]).addTo(map)
+                .bindPopup("<b>Your approximate location</b>");
+            map.setView([defaultLat, defaultLon], 15);
+
+            // ❌ Remove this too:
+            // runSearchAndShow(); 
+        },
+        { enableHighAccuracy: true }
+    );
+} else {
+    // Geolocation not supported
+    userLocation = { latitude: defaultLat, longitude: defaultLon };
+    map.setView([defaultLat, defaultLon], 15);
+
+    // ❌ Remove:
+    // runSearchAndShow();
+}
+
 
             // search parameters from the form
             function buildSearchQuery() {
@@ -481,36 +491,28 @@ body {
 
             // ======== MODIFIED: This function now also updates the map markers ========
             function renderMapMarkers(list) {
-                // Clear all previous vending machine markers
-                vendingMarkersLayer.clearLayers();
+    vendingMarkersLayer.clearLayers();
 
-                if (!list || list.length === 0) return;
+    list.forEach(item => {
+        if (item.location && item.location.lat && item.location.lon) {
+            const marker = L.marker([item.location.lat, item.location.lon]);
+            marker.bindPopup(`<b>${item.store_name}</b><br>${item.address}`);
+            vendingMarkersLayer.addLayer(marker);
+        }
+    });
 
-                list.forEach(item => {
-                    if (item.location && item.location.lat && item.location.lon) {
-                        const lat = item.location.lat;
-                        const lon = item.location.lon;
+    // ✅ Only adjust map if there are markers with valid bounds
+    if (vendingMarkersLayer.getLayers().length > 0) {
+        const bounds = vendingMarkersLayer.getBounds();
+        if (bounds.isValid()) {
+            map.fitBounds(bounds, { padding: [50, 50] });
+        }
+    } else {
+        // ✅ Keep map centered on your location instead of zooming out
+        map.setView([defaultLat, defaultLon], 15);
+    }
+}
 
-                        // Create a popup with a "Get Directions" button
-                        const popupContent = `
-                            <b>${item.store_name || 'Unknown'}</b><br>
-                            ${item.address || ''}<br>
-                            <button onclick="fetchRouteTo(${lat}, ${lon})">Get Directions</button>
-                        `;
-
-                        const marker = L.marker([lat, lon])
-                            .bindPopup(popupContent);
-
-                        // Add the new marker to our dedicated layer
-                        marker.addTo(vendingMarkersLayer);
-                    }
-                });
-
-                // Adjust map to show all markers, if any were added
-                if (vendingMarkersLayer.getLayers().length > 0) {
-                    map.fitBounds(vendingMarkersLayer.getBounds(), { padding: [50, 50] });
-                }
-            }
 
             // render the page
             function renderResults(list, total) {
