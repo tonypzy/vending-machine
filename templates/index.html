@@ -3,477 +3,703 @@
 <head>
     <title>Vend-nier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <style>
-        body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 2rem;
-    box-sizing: border-box;
-
-    /* Red checkerboard background */
-    background-image: 
-        linear-gradient(45deg, #ff6f61 25%, transparent 25%), 
-        linear-gradient(-45deg, #ff6f61 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #ff6f61 75%), 
-        linear-gradient(-45deg, transparent 75%, #ff6f61 75%);
-    background-size: 80px 80px;
-    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 2rem;
-    box-sizing: border-box;
-
-    /* Vending machine-inspired smooth red gradient background */
-    background-color: #b71c1c; /* rich vending-machine red base */
-    background-image: 
-        radial-gradient(circle at 20% 20%, #ff3a3a 0%, transparent 50%),
-        radial-gradient(circle at 80% 30%, #ff5252 0%, transparent 50%),
-        radial-gradient(circle at 50% 70%, #e53935 0%, transparent 50%),
-        radial-gradient(circle at 30% 80%, #d32f2f 0%, transparent 50%);
-    background-blend-mode: overlay;
-}
-
-
-
-
-
-
-.header {
-    text-align: center;
-    margin: 0; /* remove auto margin */
-    padding: 0.5rem 0; /* vertical padding only */
-    border-radius: 0; /* optional: remove rounded corners for full-width look */
-    background-color: #fff; /* header box color */
-    width: 100%; /* full width */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    border-bottom: 3px solid #b71c1c; /* optional: keep bottom border for style */
-    position: relative;
-}
-
-.header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    color: #b71c1c;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.header p {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    font-style: italic;
-    color: #800000;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Remove the gap so the map and form appear connected */
-    gap: 0; 
-    width: 100%;
-    max-width: 1200px; /* optional: constrain width */
-    margin: 2rem auto;
-}
-
-.form-container, .map-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-#map {
-    border-radius: 12px;
-}
-
-/* Make form-container on left, map-container on right */
-.form-container {
-    flex: 1 1 400px; /* grow/shrink, minimum width */
     
-}
-
-.map-container {
-    flex: 2 1 500px; /* map is wider */
-    min-width: 400px;
-}
-
-/* Optional: remove internal spacing between the boxes */
-.container > * {
-    margin: 0;
-}
-
-
-        select[multiple] {
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            padding: 8px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    <style>
+        :root {
+            --osu-red: #8B0000;
+            --osu-red-rgb: 139, 0, 0;
+            --osu-red-light: #fff8f8;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
         }
 
-        #results-list {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 6px;
-            box-shadow: inset 0 -6px 6px -6px rgba(0,0,0,0.1);
+        html {
+            scroll-behavior: smooth;
         }
 
-        .result-card {
-    background-color: #fafafa;
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.result-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.pill {
-    background-color: #e9ecef;
-    color: #495057;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    margin: 2px 4px 2px 0;
-    display: inline-block;
-}
-
-
-
-        .map-container {
-            flex: 2;
-            min-width: 400px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group h4 {
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            color: #555;
-        }
-
-        .checkbox-group {
+        .navbar {
+            background: white; 
+            height: 70px;
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
         }
-
-        label {
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            height: 70px;
+            width: 100%;
+            max-width: 1600px;
+            padding: 0 2rem;
+        }
+        .navbar-logo {
+            color: var(--osu-red);
+            justify-self: start;
+            cursor: pointer;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            cursor: pointer;
+        }
+        .navbar-logo img {
+            height: 40px;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            text-align: center;
+        }
+        .nav-item {
+            height: 70px;
+        }
+        .nav-link {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0 1rem;
+            height: 100%;
+            font-weight: 700;
+            transition: color 0.2s ease-out;
+        }
+        .nav-link:hover {
+            color: var(--osu-red);
         }
 
-        input[type="checkbox"], input[type="radio"] {
-            margin-right: 8px;
-            accent-color: #8B0000;
+        .hero-section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            color: white;
+            position: relative;
+            
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='vendnier_hero.png') }}");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
-
-        button {
-            background-color: #8B0000;
-            color: #fff;
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+        }
+        .hero-button {
+            background: #fff;
+            color: var(--osu-red);
             border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            margin-top: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+        }
+        .hero-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .hero-button svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+        .hero-button:hover svg {
+            transform: translateY(4px);
         }
 
-        button:hover {
-            background-color: #A52A2A;
+
+        #app-content-section {
         }
 
-        button:active {
-            transform: scale(0.98);
+        .page-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .search-panel {
+            flex: 0 0 450px;
+            background: #ffffff;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 1000;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.03);
+        }
+
+        .map-panel {
+            flex: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 1.5rem 0 1.5rem;
+            gap: 1.5rem;
+        }
+        .tab-link {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-light);
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease-out;
+        }
+        .tab-link:hover {
+            color: var(--text-dark);
+        }
+        .tab-link.active {
+            color: var(--osu-red);
+            border-bottom-color: var(--osu-red);
+        }
+
+        .tab-content-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        .tab-content {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-out, visibility 0.3s;
+        }
+        .tab-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #filter-container {
+            padding: 1.5rem;
         }
 
         #search-results {
-            margin-top: 2rem;
+            padding: 1rem;
         }
-
-        #search-results h3 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 0.5rem;
+    
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+    
+        .form-group h4 {
+            font-weight: 700;
             margin-top: 0;
             margin-bottom: 1rem;
+            color: var(--text-dark);
         }
-
-        .result-card {
-            background-color: #fafafa;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
+    
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+    
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
             cursor: pointer;
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            transition: all 0.2s ease-out;
         }
-
-        .result-card:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+        .checkbox-group label:hover {
+            border-color: #bbb;
+            background-color: var(--bg-light);
+        }
+    
+        .checkbox-group label:has(input:checked) {
+            background-color: var(--osu-red-light);
+            border-color: var(--osu-red);
+        }
+    
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 10px;
+            accent-color: var(--osu-red);
+            width: 1.3em;
+            height: 1.3em;
+        }
+        
+        select[multiple] {
+            border-radius: var(--radius-md);
+            border: 1px solid #ccc;
+            padding: 8px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+    
+        button[type="submit"] {
+            background-color: var(--osu-red);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease-out;
+        }
+    
+        button[type="submit"]:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(var(--osu-red-rgb), 0.25);
+        }
+    
+        button[type="submit"]:active {
+            transform: scale(0.98) translateY(-1px);
+        }
+        button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    
+        .result-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+            transition: all 0.2s ease-out;
+            border-left: 4px solid transparent;
+        }
+    
+        .result-card:hover {
+            transform: translateX(4px);
+            border-left-color: var(--osu-red);
+            background: var(--bg-light);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .result-card h4 {
-            margin: 0 0 0.5rem 0;
-            color: #8B0000;
+        .result-card.active {
+            background: var(--osu-red-light);
+            border-left-color: var(--osu-red);
+            border-color: var(--osu-red);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+    
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
         }
 
+        .card-header h4 {
+            margin: 0;
+            color: var(--osu-red);
+            font-size: 1.15rem;
+            flex: 1;
+        }
+    
         .result-card .muted {
-            font-size: 0.8rem;
-            color: #777;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
-
+    
         .pill-container {
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
+        }
+    
+        .pill {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 2px 4px 2px 0;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+        }
+    
+        .route-button {
+            background-color: var(--osu-red-light);
+            color: var(--osu-red);
+            border: 1px solid var(--osu-red);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            white-space: nowrap;
+            margin-left: 1rem;
         }
 
-        .pill {
-            display: inline-block;
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            margin-right: 6px;
-            margin-bottom: 6px;
+        .route-button:hover {
+            background-color: var(--osu-red);
+            color: #fff;
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        #building_group {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition: max-height 0.4s ease-out, 
+                        opacity 0.3s ease-out, 
+                        transform 0.4s ease-out,
+                        margin-top 0.4s ease-out;
+        }
+    
+        #building_group.visible {
+            max-height: 300px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 1rem;
+        }
+    
         .error-message {
             color: #dc3545;
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
             padding: 1rem;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
+            margin: 1rem;
+        }
+
+        .loading-container {
+            padding: 3rem 1rem;
+            text-align: center;
         }
         .loading-spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #8B0000;
+            border-top: 4px solid var(--osu-red);
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             animation: spin 1s linear infinite;
-            display: none; /* Hide by default */
+            display: block;
+            margin: 0 auto 0.5rem auto;
         }
+        .loading-text {
+            color: var(--osu-red);
+            font-style: italic;
+            display: block;
+            text-align: center;
+        }
+    
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .loading-text {
-            color: #8B0000;
-            margin-left: 10px;
-            font-style: italic;
-            display: none; /* Hide by default */
-        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="header-bar"></div> <!-- Checkerboard top bar -->
-        <h1>Vend-nier</h1>
-        <p>Find vending machines "nier" you</p>
-    </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">
+                <img src="{{ url_for('static', filename='vendnier_logo.png') }}" alt="Vend-nier Logo">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/aboutus" class="nav-link">INFO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Vend-nier</h1>
+            <p>Find vending machines "nier" you</p>
+            <a href="#app-content-section" class="hero-button">
+                Get Started
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                </svg>                  
+            </a>
+        </div>
+    </section>
 
-    <!-- LEFT SIDE: Form + Search Results -->
-    <div style="flex:1 1 400px; display: flex; flex-direction: column; gap: 1rem; background-color: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-            <!-- Payment Methods + Services -->
-            <div style="flex:1; min-width:200px;">
-                <div class="form-group">
-                    <h4>Payment Methods</h4>
-                    <div class="checkbox-group">
-                        {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','American Express','Cash','BuckID'] %}
-                            <label><input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}</label>
-                        {% endfor %}
-                    </div>
+    <section id="app-content-section">
+        <div class="page-container">
+            <div class="search-panel">
+                
+                <div class="tab-nav">
+                    <span class="tab-link active" data-tab="filters">Filters</span>
+                    <span class="tab-link" data-tab="results">Results</span>
                 </div>
 
-                <div class="form-group">
-                    <h4>Services</h4>
-                    <div class="checkbox-group">
-                        {% for service in ['Drinks','Snacks'] %}
-                            <label><input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}</label>
-                        {% endfor %}
+                <div class="tab-content-container">
+                    <div id="filter-container" class="tab-content active" data-tab-content="filters">
+                        <form id="search-form">
+                            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                                <div style="flex:1; min-width:150px;">
+                                    <div class="form-group">
+                                        <h4>Payment Methods</h4>
+                                        <div class="checkbox-group">
+                                            {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','American Express','Cash','BuckID'] %}
+                                                <label><input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}</label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Services</h4>
+                                        <div class="checkbox-group">
+                                            {% for service in ['Drinks','Snacks'] %}
+                                                <label><input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}</label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="flex:1; min-width:150px;">
+                                    <div class="form-group">
+                                        <h4>Providers</h4>
+                                        <div class="checkbox-group">
+                                            {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
+                                                <label><input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}</label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Special Access?</h4>
+                                        <div class="checkbox-group">
+                                            <label><input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes</label>
+                                            <label><input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No</label>
+                                        </div>
+                                    </div>
+
+                                    <div id="building_group" class="form-group">
+                                        <h4>Select Buildings</h4>
+                                        <select name="buildings" id="buildings-select" multiple size="8">
+                                            {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
+                                                <option value="{{ building }}" {% if building in selected_buildings %}selected{% endif %}>{{ building }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+
+                    <div id="search-results" class="tab-content" data-tab-content="results">
+                        <div id="results-list">
+                            <div class="muted" style="text-align:center; padding: 2rem;">Click Search to load results...</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Providers + Special Access -->
-            <div style="flex:1; min-width:200px;">
-                <div class="form-group">
-                    <h4>Providers</h4>
-                    <div class="checkbox-group">
-                        {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
-                            <label><input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}</label>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <h4>Special Access?</h4>
-                    <div class="checkbox-group">
-                        <label><input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes</label>
-                        <label><input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No</label>
-                    </div>
-                </div>
-
-                <div id="building_group" class="form-group" style="display:none;">
-                    <h4>Select Buildings</h4>
-                    <select name="buildings" id="buildings-select" multiple size="8" style="width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #ccc;">
-                        {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
-                            <option value="{{ building }}" {% if building in selected_buildings %}selected{% endif %}>{{ building }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <div class="map-panel">
+                <div id="map"></div>
             </div>
         </div>
-
-        <!-- Search Button -->
-        <form id="search-form">
-            <button type="submit" style="margin-top: 1rem;">Search</button>
-        </form>
-
-        <!-- Search Results spanning full left side -->
-        </div>
-
-    <!-- RIGHT COLUMN: Map -->
-    <div class="map-container" style="flex:2 1 500px; min-width:400px; display:flex; flex-direction:column; height:400px;">
-        <div id="map" style="flex:1; width:100%;"></div>
-    </div>
-
-    <!-- SEARCH RESULTS (spanning full width below both columns) -->
-    <div id="search-results" style="flex-basis:100%; margin-top:1rem; background:white; padding:1rem; border-radius:6px;">
-        <h3>Search Results</h3>
-        <div id="results-list" style="max-height:400px; overflow-y:auto;">Click Search to load results...</div>
-    
-</div>
+    </section>
 
     
     <script>
-        // ======== NEW: Global variables for map state ========
         let map;
         let userMarker;
         let routeLine;
-        let vendingMarkersLayer; // A layer to hold all vending machine markers
-        let userLocation = null; // To store user's coordinates
+        let vendingMarkersLayer;
+        let userLocation = null;
+
+        function clearActiveCards() {
+            document.querySelectorAll('.result-card.active').forEach(c => c.classList.remove('active'));
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-link').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.tab === tabId);
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.toggle('active', content.dataset.tabContent === tabId);
+            });
+        }
 
         function toggleBuildings() {
             const yesRadio = document.querySelector('input[name="special_access"][value="Yes"]');
-            document.getElementById("building_group").style.display = yesRadio && yesRadio.checked ? "block" : "none";
+            const group = document.getElementById("building_group");
+            
+            if (yesRadio && yesRadio.checked) {
+                group.classList.add('visible');
+            } else {
+                group.classList.remove('visible');
+            }
         }
 
-        // ======== NEW: Function to pan the map to a marker ========
-        function panToMarker(lat, lon, openPopup) {
+        function panToMarker(lat, lon, openPopup, machineId) {
             if (!map) return;
-            map.setView([lat, lon], 17); // Zoom in closer
-            // Bonus: find the marker and open its popup
+            map.setView([lat, lon], 17);
+            
+            showTab('results');
+            clearActiveCards();
+            
+            if (machineId) {
+                const card = document.getElementById(`result-card-${machineId}`);
+                if (card) {
+                    card.classList.add('active');
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+
             vendingMarkersLayer.eachLayer(function(layer) {
-                if (layer.getLatLng().lat == lat && layer.getLatLng().lng == lon) {
+                if (layer.machine_id === machineId) {
                      if(openPopup) layer.openPopup();
                 }
             });
         }
 
-        // ======== NEW: Function to fetch a route to a SPECIFIC destination ========
         async function fetchRouteTo(endLat, endLon) {
             if (!userLocation) {
                 alert("Your location is not available yet. Please wait.");
                 return;
             }
-
             const startLon = userLocation.longitude;
             const startLat = userLocation.latitude;
-
-            const res = await fetch("/route", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ start: [startLon, startLat], end: [endLon, endLat] })
-            });
-            const data = await res.json();
-
-            if (data.coordinates) {
-                // Remove old route line if it exists
-                if (routeLine) {
-                    map.removeLayer(routeLine);
+            try {
+                const res = await fetch("/route", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ start: [startLon, startLat], end: [endLon, endLat] })
+                });
+                if (!res.ok) throw new Error("Route request failed");
+                const data = await res.json();
+                if (data.coordinates) {
+                    if (routeLine) map.removeLayer(routeLine);
+                    const latlngs = data.coordinates.map(c => [c[1], c[0]]);
+                    routeLine = L.polyline(latlngs, { color: '#8B0000', weight: 5, opacity: 0.7 }).addTo(map);
+                    map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
                 }
-                const latlngs = data.coordinates.map(c => [c[1], c[0]]);
-                routeLine = L.polyline(latlngs, { color: '#8B0000', weight: 5, opacity: 0.7 }).addTo(map);
-
-                // Fit map to the route bounds
-                map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
+            } catch (e) {
+                console.error("Error fetching route:", e);
+                alert("Could not calculate the route.");
             }
         }
 
         window.onload = function() {
-            toggleBuildings();
+            toggleBuildings(); 
+
+            document.querySelectorAll('.tab-link').forEach(tab => {
+                tab.addEventListener('click', () => showTab(tab.dataset.tab));
+            });
+
+            document.querySelector('.hero-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
 
             const defaultLat = {{ latitude }};
             const defaultLon = {{ longitude }};
 
-            map = L.map('map').setView([defaultLat, defaultLon], 14);
+            map = L.map('map', { zoomControl: false }).setView([defaultLat, defaultLon], 14);
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
             vendingMarkersLayer = L.featureGroup().addTo(map);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
 
-            // Get user's location
-            // Get user's location
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        pos => {
-            userLocation = pos.coords; // Store user location
-            if (userMarker) map.removeLayer(userMarker);
-            userMarker = L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
-                .bindPopup("<b>You are here</b>").openPopup();
-            map.setView([userLocation.latitude, userLocation.longitude], 15);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    pos => {
+                        userLocation = pos.coords;
+                        if (userMarker) map.removeLayer(userMarker);
+                        userMarker = L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
+                            .bindPopup("<b>You are here</b>").openPopup();
+                        map.setView([userLocation.latitude, userLocation.longitude], 15);
+                    },
+                    () => {
+                        userLocation = { latitude: defaultLat, longitude: defaultLon };
+                        map.setView([defaultLat, defaultLon], 15);
+                    },
+                    { enableHighAccuracy: true }
+                );
+            } else {
+                userLocation = { latitude: defaultLat, longitude: defaultLon };
+                map.setView([defaultLat, defaultLon], 15);
+            }
 
-            // ❌ Remove this:
-            // runSearchAndShow(); 
-        },
-        () => {
-            // On failure, use default and show location
-            userLocation = { latitude: defaultLat, longitude: defaultLon };
-            if (userMarker) map.removeLayer(userMarker);
-            userMarker = L.marker([defaultLat, defaultLon]).addTo(map)
-                .bindPopup("<b>Your approximate location</b>");
-            map.setView([defaultLat, defaultLon], 15);
-
-            // ❌ Remove this too:
-            // runSearchAndShow(); 
-        },
-        { enableHighAccuracy: true }
-    );
-} else {
-    // Geolocation not supported
-    userLocation = { latitude: defaultLat, longitude: defaultLon };
-    map.setView([defaultLat, defaultLon], 15);
-
-    // ❌ Remove:
-    // runSearchAndShow();
-}
-
-
-            // search parameters from the form
             function buildSearchQuery() {
                 const p = new URLSearchParams();
                 const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked')).map(i => i.value.toLowerCase());
@@ -482,50 +708,65 @@ if (navigator.geolocation) {
                 if (svcs.length) p.set('services', svcs.join(','));
                 const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked')).map(i => i.value.toLowerCase());
                 if (prov.length) p.set('provider', prov.join(','));
+                
                 const sa = document.querySelector('input[name="special_access"]:checked');
-                if (sa) p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
+                if (sa) {
+                    p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
+                }
+
                 p.set('from', '0');
-                p.set('size', '200'); // Get more results for the map
+                p.set('size', '200');
                 return p.toString();
             }
 
-            // ======== MODIFIED: This function now also updates the map markers ========
             function renderMapMarkers(list) {
-    vendingMarkersLayer.clearLayers();
+                vendingMarkersLayer.clearLayers();
 
-    list.forEach(item => {
-        if (item.location && item.location.lat && item.location.lon) {
-            const marker = L.marker([item.location.lat, item.location.lon]);
-            marker.bindPopup(`<b>${item.store_name}</b><br>${item.address}`);
-            vendingMarkersLayer.addLayer(marker);
-        }
-    });
+                list.forEach(item => {
+                    if (item.location && item.location.lat && item.location.lon) {
+                        const marker = L.marker([item.location.lat, item.location.lon]);
+                        marker.bindPopup(`<b>${item.store_name}</b><br>${item.address}`);
+                        
+                        marker.machine_id = item.machine_id;
 
-    // ✅ Only adjust map if there are markers with valid bounds
-    if (vendingMarkersLayer.getLayers().length > 0) {
-        const bounds = vendingMarkersLayer.getBounds();
-        if (bounds.isValid()) {
-            map.fitBounds(bounds, { padding: [50, 50] });
-        }
-    } else {
-        // ✅ Keep map centered on your location instead of zooming out
-        map.setView([defaultLat, defaultLon], 15);
-    }
-}
+                        marker.on('click', function(e) {
+                            const id = e.target.machine_id;
+                            showTab('results');
+                            clearActiveCards();
+                            const card = document.getElementById(`result-card-${id}`);
+                            if (card) { 
+                                card.classList.add('active'); 
+                                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        });
 
+                        vendingMarkersLayer.addLayer(marker);
+                    }
+                });
 
-            // render the page
+                if (vendingMarkersLayer.getLayers().length > 0) {
+                    const bounds = vendingMarkersLayer.getBounds();
+                    if (bounds.isValid()) {
+                        map.fitBounds(bounds, { padding: [50, 50] });
+                    }
+                } else if (userLocation) {
+                    map.setView([userLocation.latitude, userLocation.longitude], 15);
+                } else {
+                    map.setView([defaultLat, defaultLon], 15);
+                }
+            }
+
             function renderResults(list, total) {
               const container = document.getElementById('results-list');
               if (!container) return;
               if (!list || list.length === 0) {
-                container.innerHTML = '<div class="muted">No results found.</div>';
+                container.innerHTML = '<div class="muted" style="text-align:center; padding: 2rem;">No results found.</div>';
                 return;
               }
               const html = `
-                <div class="muted" style="margin-bottom:6px;">Total: ${total}</div>
-                ${list.map(item => {
-                  // ======== MODIFIED: Added onclick to pan the map ========
+                <div class="muted" style="margin-bottom:6px; padding: 0 0.5rem;">Total found: ${total}</div>
+                ${list.map((item, index) => {
+                  
                   const lat = item.location ? item.location.lat : null;
                   const lon = item.location ? item.location.lon : null;
 
@@ -534,9 +775,21 @@ if (navigator.geolocation) {
                   const pillsS = services.map(s => `<span class="pill">${s}</span>`).join(' ');
                   const pillsP = payments.map(s => `<span class="pill">${s}</span>`).join(' ');
 
+                  const animationDelay = `style="animation-delay: ${index * 50}ms"`;
+
                   return `
-                    <div class="result-card" onclick="panToMarker(${lat}, ${lon}, true)">
-                      <h4>${item.store_name || 'Unknown'} <span class="muted">#${item.machine_id}</span></h4>
+                    <div class="result-card" 
+                         id="result-card-${item.machine_id}"
+                         ${animationDelay} 
+                         onclick="panToMarker(${lat}, ${lon}, true, '${item.machine_id}')">
+                      
+                      <div class="card-header">
+                          <h4>${item.store_name || 'Unknown'} <span class="muted">#${item.machine_id}</span></h4>
+                          <button class="route-button" onclick="event.stopPropagation(); fetchRouteTo(${lat}, ${lon});">
+                              Get Directions
+                          </button>
+                      </div>
+
                       <div class="muted">${item.address || ''} • ${item.campus || ''}</div>
                       <div class="pill-container">
                           ${pillsS} ${pillsP}
@@ -548,13 +801,13 @@ if (navigator.geolocation) {
               container.innerHTML = html;
             }
 
-            // get the backend api
             async function runSearchAndShow() {
               const formEl = document.getElementById('search-form');
               const searchBtn = formEl.querySelector('button');
               const resultsList = document.getElementById('results-list');
               searchBtn.disabled = true;
-              resultsList.innerHTML = `<div class="loading-spinner"></div><div class="loading-text">Searching...</div>`;
+              
+              resultsList.innerHTML = `<div class="loading-container"><div class="loading-spinner"></div><div class="loading-text">Searching...</div></div>`;
               
               const qs  = buildSearchQuery();
               const url = '/api/machines/search' + (qs ? ('?' + qs) : '');
@@ -567,6 +820,7 @@ if (navigator.geolocation) {
                 }
                 renderResults(data.results, data.total);
                 renderMapMarkers(data.results);
+                showTab('results');
               } catch (e) {
                 resultsList.innerHTML = `<div class="error-message">Search error: ${e}</div>`;
               } finally {
@@ -581,8 +835,6 @@ if (navigator.geolocation) {
                 runSearchAndShow();
               });
             }
-
-            // Initial search is now triggered after geolocation is determined.
         };
     </script>
 </body>

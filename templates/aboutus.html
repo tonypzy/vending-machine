@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Vend-nier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --osu-red: #8B0000;
+            --osu-red-light: #fff8f8;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 70px 2rem 2rem 2rem;
+            height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            height: 70px;
+            width: 100%;
+            max-width: 1600px;
+            padding: 0 2rem;
+        }
+        .navbar-logo {
+            color: var(--osu-red);
+            justify-self: start;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo img {
+            height: 40px; 
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            text-align: center;
+        }
+        .nav-item {
+            height: 70px;
+        }
+        .nav-link {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0 1rem;
+            height: 100%;
+            font-weight: 700;
+            transition: color 0.2s ease-out;
+        }
+        .nav-link:hover {
+            color: var(--osu-red);
+        }
+
+        .content-card {
+            background-color: #fff;
+            color: var(--text-dark);
+            padding: 2rem 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 2rem auto;
+            line-height: 1.7;
+        }
+        .content-card h1 {
+            color: var(--osu-red);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+        .content-card h2 {
+            color: var(--text-dark);
+             margin-top: 2rem;
+             margin-bottom: 1rem;
+             border-bottom: 1px solid var(--border-color);
+             padding-bottom: 0.5rem;
+        }
+        .content-card p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">
+                <img src="{{ url_for('static', filename='vendnier_logo.png') }}" alt="Vend-nier Logo">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/aboutus" class="nav-link">INFO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-card">
+        <h1>About Vend-nier</h1>
+        <p>This project is designed to help students and staff at The Ohio State University find the nearest and most convenient vending machines.</p>
+        <p>Our goal is to provide real-time data on machine locations, services (drinks, snacks), and accepted payment methods (including BuckID).</p>
+        
+        <h2>Team</h2>
+        <p>(Placeholder for team info)</p>
+
+        <h2>Technology</h2>
+        <p>This application is built with Python (Flask) on the backend, Elasticsearch for data storage and geospatial search, and modern HTML/CSS/JavaScript with Leaflet.js on the frontend.</p>
+    </div>
+
+</body>
+</html>

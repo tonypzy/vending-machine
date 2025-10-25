@@ -3,13 +3,24 @@ import requests
 import polyline
 import os
 import json
+from dotenv import load_dotenv # 导入 dotenv
 
-app = Flask(__name__)
+load_dotenv() 
+
+app = Flask(__name__, static_folder='assets')
+
 
 ES_URL = os.getenv("ES_URL", "http://localhost:9200")
 ES_INDEX = os.getenv("ES_INDEX", "vending_machines")
 ES_USER = os.getenv("ES_USER", "elastic")
-ES_PASS = os.getenv("ES_PASS", "Ayr1nLfT")
+ES_PASS = os.getenv("ES_PASS") 
+
+ORS_API_KEY = os.getenv("ORS_API_KEY") 
+
+if not ES_PASS:
+    raise ValueError("ES_PASS not found in .env file.")
+if not ORS_API_KEY:
+    raise ValueError("ORS_API_KEY not found in .env file.")
 
 # ES Config
 def es_search(payload: dict):
@@ -23,7 +34,7 @@ def es_search(payload: dict):
     headers=headers,
     data=json.dumps(payload),
     timeout=10,
-    auth=(ES_USER, ES_PASS)
+    auth=(ES_USER, ES_PASS) 
 )
 
     resp.raise_for_status()
@@ -144,9 +155,6 @@ def machines_search():
         return {"ok": False, "error": str(e)}, 500
 
 
-# Map API Key (free tier)
-ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImNlY2ZiOTY3M2ViYzQwM2ViNDlkMDQ5MWJiODFhNDJhIiwiaCI6Im11cm11cjY0In0="
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     selected_choices = request.form.getlist("choices")
@@ -169,6 +177,10 @@ def home():
         longitude=longitude
     )
 
+@app.route("/aboutus")
+def about():
+    return render_template("aboutus.html")
+
 
 @app.route("/route", methods=["POST"])
 def route():
@@ -177,7 +189,7 @@ def route():
     end = data["end"]
 
     url = "https://api.openrouteservice.org/v2/directions/foot-walking"
-    headers = {"Authorization": ORS_API_KEY, "Content-Type": "application/json"}
+    headers = {"Authorization": ORS_API_KEY, "Content-Type": "application/json"} 
     body = {"coordinates": [start, end]}
 
     resp = requests.post(url, headers=headers, json=body)

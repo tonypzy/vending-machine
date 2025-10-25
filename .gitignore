@@ -1,1 +1,11 @@
+# .gitignore
+
 elastic-start-local/osu_vending.xlsx
+
+.env
+
+__pycache__/
+*.pyc
+
+.DS_Store
+Thumbs.db
