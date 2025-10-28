@@ -1,6 +1,6 @@
 # .gitignore
 
-elastic-start-local/osu_vending.xlsx
+.xlsx
 
 .env
 
