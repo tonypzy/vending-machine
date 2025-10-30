@@ -511,7 +511,7 @@
                                     <div class="form-group">
                                         <h4>Payment Methods</h4>
                                         <div class="checkbox-group">
-                                            {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','American Express','Cash','BuckID'] %}
+                                            {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','AmEx','Cash','BuckID'] %}
                                                 <label><input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}</label>
                                             {% endfor %}
                                         </div>
