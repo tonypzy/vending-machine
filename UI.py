@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request
-import requests
-import polyline
 import os
 import json
-from dotenv import load_dotenv # 导入 dotenv
+import requests
+import polyline
+from flask import Flask, render_template, request
+from dotenv import load_dotenv
+
+import google.generativeai as genai
 
 load_dotenv() 
 
@@ -15,14 +17,31 @@ ES_INDEX = os.getenv("ES_INDEX", "vending_machines")
 ES_USER = os.getenv("ES_USER", "elastic")
 ES_PASS = os.getenv("ES_PASS") 
 
-ORS_API_KEY = os.getenv("ORS_API_KEY") 
-
 if not ES_PASS:
     raise ValueError("ES_PASS not found in .env file.")
+
+ORS_API_KEY = os.getenv("ORS_API_KEY") 
 if not ORS_API_KEY:
     raise ValueError("ORS_API_KEY not found in .env file.")
 
-# ES Config
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in .env file.")
+
+genai.configure(api_key=GEMINI_API_KEY)
+generation_config = {
+    "temperature": 0.2,
+    "top_p": 1,
+    "top_k": 1,
+    "max_output_tokens": 2048,
+}
+
+gemini_model = genai.GenerativeModel(
+    model_name="models/gemini-flash-latest",  
+    generation_config=generation_config
+)
+
+
 def es_search(payload: dict):
     """
     封装：POST _search
@@ -30,17 +49,15 @@ def es_search(payload: dict):
     url = f"{ES_URL}/{ES_INDEX}/_search"
     headers = {"Content-Type": "application/json"}
     resp = requests.post(
-    url,
-    headers=headers,
-    data=json.dumps(payload),
-    timeout=10,
-    auth=(ES_USER, ES_PASS) 
-)
-
+        url,
+        headers=headers,
+        data=json.dumps(payload),
+        timeout=10,
+        auth=(ES_USER, ES_PASS) 
+    )
     resp.raise_for_status()
     return resp.json()
 
-# Search API
 @app.route("/api/machines/search", methods=["GET"])
 def machines_search():
     """
@@ -65,7 +82,6 @@ def machines_search():
     services = parse_multi("services")
     payments = parse_multi("payment_methods")
     providers = parse_multi("provider")
-
 
     campus = args.get("campus")
     zip_code = args.get("zip")
@@ -211,6 +227,52 @@ def route():
         "coordinates": [[lon, lat] for lat, lon in coords],
         "steps": steps
     }
+
+
+@app.route("/api/interpret", methods=["POST"])
+def interpret_text():
+    data = request.get_json()
+    user_query = data.get("query")
+
+    if not user_query:
+        return {"ok": False, "error": "No query provided"}, 400
+
+    prompt = f"""
+    You are a helpful search assistant for a vending machine finder app.
+    Convert the user's query into a JSON object matching the app filters.
+
+    The user's query is: "{user_query}"
+
+    Available filter values:
+
+    services: ["drinks", "snacks"]
+    payment_methods: ["visa","apple pay","discover","mastercard","google pay","amex","cash","buckid"]
+    provider: ["coca cola","dasani","vitamin water","various"]
+    special_access: true or false
+
+    Rules:
+    - Only return JSON, no explanation.
+    - If vague, return 
+
+    JSON response:
+    """
+
+    try:
+        response = gemini_model.generate_content(f"{prompt}\n```json\n")
+        raw = response.text.strip()
+
+        # Clean markdown formatting
+        cleaned = raw.replace("```json", "").replace("```", "").strip()
+        filters = json.loads(cleaned)
+
+        return {"ok": True, "filters": filters}
+
+    except Exception as e:
+        print("Gemini Error:", e)
+        if "response" in locals():
+            print("Raw Gemini Response:", response.text)
+        return {"ok": False, "error": f"Gemini API error: {e}"}, 502
+
 
 if __name__ == "__main__":
     app.run(debug=True)

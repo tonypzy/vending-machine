@@ -152,7 +152,6 @@
             transform: translateY(4px);
         }
 
-
         #app-content-section {
         }
 
@@ -231,15 +230,60 @@
             opacity: 1;
             visibility: visible;
         }
+        
+        .voice-search-section {
+            padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .voice-search-section h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .voice-search-section .muted {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .voice-button {
+            background-color: var(--osu-red);
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .voice-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(var(--osu-red-rgb), 0.25);
+        }
+        .voice-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .voice-button.listening {
+            background-color: #e0acac;
+            color: var(--osu-red);
+        }
+        .voice-button svg {
+            width: 24px;
+            height: 24px;
+        }
 
-        #filter-container {
+        .manual-search-container {
             padding: 1.5rem;
         }
 
-        #search-results {
-            padding: 1rem;
-        }
-    
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -499,64 +543,80 @@
             <div class="search-panel">
                 
                 <div class="tab-nav">
-                    <span class="tab-link active" data-tab="filters">Filters</span>
+                    <span class="tab-link active" data-tab="search">Search</span>
                     <span class="tab-link" data-tab="results">Results</span>
                 </div>
 
                 <div class="tab-content-container">
-                    <div id="filter-container" class="tab-content active" data-tab-content="filters">
-                        <form id="search-form">
-                            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                                <div style="flex:1; min-width:150px;">
-                                    <div class="form-group">
-                                        <h4>Payment Methods</h4>
-                                        <div class="checkbox-group">
-                                            {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','AmEx','Cash','BuckID'] %}
-                                                <label><input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}</label>
-                                            {% endfor %}
+
+                    <div id="search-container" class="tab-content active" data-tab-content="search">
+                        
+                        <div class="voice-search-section">
+                            <h4>Try our new voice search!</h4>
+                            <p class="muted">Click the mic and say "I'm hungry".</p>
+                            <button type="button" id="voice-search-btn" class="voice-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15c-3.314 0-6-2.686-6-6v-1.5a6 6 0 1112 0v1.5c0 3.314-2.686 6-6 6z" />
+                                </svg>
+                                <span>Start Listening</span>
+                            </button>
+                        </div>
+                        
+                        <div class="manual-search-container">
+                            <h4 style="font-weight: 700; color: var(--text-light); text-align: center; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.9rem;">Or search manually</h4>
+                            <form id="search-form">
+                                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                                    <div style="flex:1; min-width:150px;">
+                                        <div class="form-group">
+                                            <h4>Payment Methods</h4>
+                                            <div class="checkbox-group">
+                                                {% for method in ['Visa','Apple Pay','Discover','MasterCard','Google Pay','AmEx','Cash','BuckID'] %}
+                                                    <label><input type="checkbox" name="choices" value="{{ method }}" {% if method in selected_choices %}checked{% endif %}> {{ method }}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <h4>Services</h4>
+                                            <div class="checkbox-group">
+                                                {% for service in ['Drinks','Snacks'] %}
+                                                    <label><input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}</label>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <h4>Services</h4>
-                                        <div class="checkbox-group">
-                                            {% for service in ['Drinks','Snacks'] %}
-                                                <label><input type="checkbox" name="services" value="{{ service }}" {% if service in selected_services %}checked{% endif %}> {{ service }}</label>
-                                            {% endfor %}
+                                    <div style="flex:1; min-width:150px;">
+                                        <div class="form-group">
+                                            <h4>Providers</h4>
+                                            <div class="checkbox-group">
+                                                {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
+                                                    <label><input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <h4>Special Access?</h4>
+                                            <div class="checkbox-group">
+                                                <label><input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes</label>
+                                                <label><input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No</label>
+                                            </div>
+                                        </div>
+
+                                        <div id="building_group" class="form-group">
+                                            <h4>Select Buildings</h4>
+                                            <select name="buildings" id="buildings-select" multiple size="8">
+                                                {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
+                                                    <option value="{{ building }}" {% if building in selected_buildings %}selected{% endif %}>{{ building }}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div style="flex:1; min-width:150px;">
-                                    <div class="form-group">
-                                        <h4>Providers</h4>
-                                        <div class="checkbox-group">
-                                            {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
-                                                <label><input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}</label>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <h4>Special Access?</h4>
-                                        <div class="checkbox-group">
-                                            <label><input type="radio" name="special_access" value="Yes" onclick="toggleBuildings()" {% if special_access=='Yes' %}checked{% endif %}> Yes</label>
-                                            <label><input type="radio" name="special_access" value="No" onclick="toggleBuildings()" {% if special_access=='No' %}checked{% endif %}> No</label>
-                                        </div>
-                                    </div>
-
-                                    <div id="building_group" class="form-group">
-                                        <h4>Select Buildings</h4>
-                                        <select name="buildings" id="buildings-select" multiple size="8">
-                                            {% for building in ['Baker Systems Engineering','Barrett House','Blackburn House','Bradley Hall','Denny Hall','Houck House','Jones Tower','Lincoln Tower','Mack Hall','Mendoza House','Morrill Tower','Morrison Tower','Neil Building','Norton House','Nosker House','Park-Stradley Hall','Paterson Hall','Smith-Steeb Hall','Taylor Tower','Worthington Building'] %}
-                                                <option value="{{ building }}" {% if building in selected_buildings %}selected{% endif %}>{{ building }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit">Search</button>
-                        </form>
+                                <button type="submit">Search Manually</button>
+                            </form>
+                        </div>
                     </div>
 
                     <div id="search-results" class="tab-content" data-tab-content="results">
@@ -580,6 +640,125 @@
         let routeLine;
         let vendingMarkersLayer;
         let userLocation = null;
+
+        /**
+         * Receive JSON from Gemini and apply filters.
+         * @param {object} filters - e.g., {"services": ["snacks"], "payment_methods": ["apple pay"]}
+         */
+        function applyFiltersFromGemini(filters) {
+            if (!filters || typeof filters !== 'object') return;
+            
+            document.getElementById('search-form').reset();
+
+            function setCheckbox(name, value) {
+                const valLower = value.toLowerCase();
+                const inputs = document.querySelectorAll(`input[name="${name}"]`);
+                for (const input of inputs) {
+                    if (input.value.toLowerCase() === valLower) {
+                        input.checked = true;
+                        return;
+                    }
+                }
+                console.warn(`Could not find checkbox for name="${name}" value="${value}"`);
+            }
+
+            function setRadio(name, value) {
+                const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+                if (input) {
+                    input.checked = true;
+                }
+            }
+
+            if (filters.services && Array.isArray(filters.services)) {
+                filters.services.forEach(val => setCheckbox('services', val));
+            }
+            
+            if (filters.payment_methods && Array.isArray(filters.payment_methods)) {
+                filters.payment_methods.forEach(val => setCheckbox('choices', val));
+            }
+            
+            if (filters.provider && Array.isArray(filters.provider)) {
+                filters.provider.forEach(val => setCheckbox('provider', val));
+            }
+
+            if (typeof filters.special_access === 'boolean') {
+                setRadio('special_access', filters.special_access ? 'Yes' : 'No');
+            }
+
+            toggleBuildings();
+        }
+
+        /**
+         * Use Web Speech API to process Speech to Text
+         */
+        async function startVoiceRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("Your browser does not support Speech Recognition. Try Chrome or Edge.");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US'; 
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            const voiceBtn = document.getElementById('voice-search-btn');
+            const voiceBtnText = voiceBtn.querySelector('span');
+            
+            recognition.start();
+            
+            voiceBtn.disabled = true;
+            voiceBtn.classList.add('listening');
+            if (voiceBtnText) voiceBtnText.textContent = 'Listening...';
+
+            recognition.onresult = async (event) => {
+                const userText = event.results[0][0].transcript;
+                console.log("Transcribed text:", userText);
+                if (voiceBtnText) voiceBtnText.textContent = 'Processing...';
+
+                try {
+                    const interpretRes = await fetch('/api/interpret', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query: userText })
+                    });
+                    const interpretData = await interpretRes.json();
+                    
+                    if (!interpretData.ok) throw new Error(`Gemini Error: ${interpretData.error}`);
+                    
+                    const filters = interpretData.filters;
+                    console.log("Gemini filters:", filters);
+
+                    applyFiltersFromGemini(filters);
+
+                    await runSearchAndShow();
+                    showTab('results'); 
+                    
+                } catch (e) {
+                    console.error("Voice search processing failed:", e);
+                    alert(`Voice search failed: ${e.message}`);
+                } finally {
+                    voiceBtn.disabled = false;
+                    voiceBtn.classList.remove('listening');
+                    if (voiceBtnText) voiceBtnText.textContent = 'Start Listening';
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error:", event.error);
+                alert(`Speech recognition error: ${event.error}`);
+                voiceBtn.disabled = false;
+                voiceBtn.classList.remove('listening');
+                if (voiceBtnText) voiceBtnText.textContent = 'Start Listening';
+            };
+            
+            recognition.onspeechend = () => {
+                recognition.stop();
+            };
+        }
+
+
 
         function clearActiveCards() {
             document.querySelectorAll('.result-card.active').forEach(c => c.classList.remove('active'));
@@ -654,6 +833,136 @@
             }
         }
 
+        function buildSearchQuery() {
+            const p = new URLSearchParams();
+            const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked')).map(i => i.value.toLowerCase());
+            if (pm.length) p.set('payment_methods', pm.join(','));
+            const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(i => i.value.toLowerCase());
+            if (svcs.length) p.set('services', svcs.join(','));
+            const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked')).map(i => i.value.toLowerCase());
+            if (prov.length) p.set('provider', prov.join(','));
+            
+            const sa = document.querySelector('input[name="special_access"]:checked');
+            if (sa) {
+                p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
+            }
+
+            p.set('from', '0');
+            p.set('size', '200');
+            return p.toString();
+        }
+
+        function renderMapMarkers(list) {
+            vendingMarkersLayer.clearLayers();
+
+            list.forEach(item => {
+                if (item.location && item.location.lat && item.location.lon) {
+                    const marker = L.marker([item.location.lat, item.location.lon]);
+                    marker.bindPopup(`<b>${item.store_name}</b><br>${item.address}`);
+                    
+                    marker.machine_id = item.machine_id;
+
+                    marker.on('click', function(e) {
+                        const id = e.target.machine_id;
+                        showTab('results');
+                        clearActiveCards();
+                        const card = document.getElementById(`result-card-${id}`);
+                        if (card) { 
+                            card.classList.add('active'); 
+                            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+
+                    vendingMarkersLayer.addLayer(marker);
+                }
+            });
+
+            if (vendingMarkersLayer.getLayers().length > 0) {
+                const bounds = vendingMarkersLayer.getBounds();
+                if (bounds.isValid()) {
+                    map.fitBounds(bounds, { padding: [50, 50] });
+                }
+            } else if (userLocation) {
+                map.setView([userLocation.latitude, userLocation.longitude], 15);
+            } else {
+                map.setView([defaultLat, defaultLon], 15);
+            }
+        }
+
+        function renderResults(list, total) {
+            const container = document.getElementById('results-list');
+            if (!container) return;
+            if (!list || list.length === 0) {
+            container.innerHTML = '<div class="muted" style="text-align:center; padding: 2rem;">No results found.</div>';
+            return;
+            }
+            const html = `
+            <div class="muted" style="margin-bottom:6px; padding: 0 0.5rem;">Total found: ${total}</div>
+            ${list.map((item, index) => {
+                
+                const lat = item.location ? item.location.lat : null;
+                const lon = item.location ? item.location.lon : null;
+
+                const services = Array.isArray(item.services) ? item.services : [];
+                const payments = Array.isArray(item.payment_methods) ? item.payment_methods : [];
+                const pillsS = services.map(s => `<span class="pill">${s}</span>`).join(' ');
+                const pillsP = payments.map(s => `<span class="pill">${s}</span>`).join(' ');
+
+                const animationDelay = `style="animation-delay: ${index * 50}ms"`;
+
+                return `
+                <div class="result-card" 
+                        id="result-card-${item.machine_id}"
+                        ${animationDelay} 
+                        onclick="panToMarker(${lat}, ${lon}, true, '${item.machine_id}')">
+                    
+                    <div class="card-header">
+                        <h4>${item.store_name || 'Unknown'} <span class="muted">#${item.machine_id}</span></h4>
+                        <button class="route-button" onclick="event.stopPropagation(); fetchRouteTo(${lat}, ${lon});">
+                            Get Directions
+                        </button>
+                    </div>
+
+                    <div class="muted">${item.address || ''} • ${item.campus || ''}</div>
+                    <div class="pill-container">
+                        ${pillsS} ${pillsP}
+                    </div>
+                </div>
+                `;
+            }).join('')}
+            `;
+            container.innerHTML = html;
+        }
+
+        async function runSearchAndShow() {
+            const formEl = document.getElementById('search-form');
+            const searchBtn = formEl.querySelector('button[type="submit"]');
+            const resultsList = document.getElementById('results-list');
+            searchBtn.disabled = true;
+            
+            resultsList.innerHTML = `<div class="loading-container"><div class="loading-spinner"></div><div class="loading-text">Searching...</div></div>`;
+            
+            const qs  = buildSearchQuery();
+            const url = '/api/machines/search' + (qs ? ('?' + qs) : '');
+            try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            if (!resp.ok || !data.ok) {
+                resultsList.innerHTML = `<div class="error-message">Search failed: ${data.error || 'Unknown error'}</div>`;
+                return;
+            }
+            renderResults(data.results, data.total);
+            renderMapMarkers(data.results);
+            showTab('results');
+            } catch (e) {
+            resultsList.innerHTML = `<div class="error-message">Search error: ${e}</div>`;
+            } finally {
+            searchBtn.disabled = false;
+            }
+        }
+
+
+
         window.onload = function() {
             toggleBuildings(); 
 
@@ -700,140 +1009,18 @@
                 map.setView([defaultLat, defaultLon], 15);
             }
 
-            function buildSearchQuery() {
-                const p = new URLSearchParams();
-                const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked')).map(i => i.value.toLowerCase());
-                if (pm.length) p.set('payment_methods', pm.join(','));
-                const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(i => i.value.toLowerCase());
-                if (svcs.length) p.set('services', svcs.join(','));
-                const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked')).map(i => i.value.toLowerCase());
-                if (prov.length) p.set('provider', prov.join(','));
-                
-                const sa = document.querySelector('input[name="special_access"]:checked');
-                if (sa) {
-                    p.set('special_access', sa.value === 'Yes' ? 'true' : 'false');
-                }
-
-                p.set('from', '0');
-                p.set('size', '200');
-                return p.toString();
-            }
-
-            function renderMapMarkers(list) {
-                vendingMarkersLayer.clearLayers();
-
-                list.forEach(item => {
-                    if (item.location && item.location.lat && item.location.lon) {
-                        const marker = L.marker([item.location.lat, item.location.lon]);
-                        marker.bindPopup(`<b>${item.store_name}</b><br>${item.address}`);
-                        
-                        marker.machine_id = item.machine_id;
-
-                        marker.on('click', function(e) {
-                            const id = e.target.machine_id;
-                            showTab('results');
-                            clearActiveCards();
-                            const card = document.getElementById(`result-card-${id}`);
-                            if (card) { 
-                                card.classList.add('active'); 
-                                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                            }
-                        });
-
-                        vendingMarkersLayer.addLayer(marker);
-                    }
-                });
-
-                if (vendingMarkersLayer.getLayers().length > 0) {
-                    const bounds = vendingMarkersLayer.getBounds();
-                    if (bounds.isValid()) {
-                        map.fitBounds(bounds, { padding: [50, 50] });
-                    }
-                } else if (userLocation) {
-                    map.setView([userLocation.latitude, userLocation.longitude], 15);
-                } else {
-                    map.setView([defaultLat, defaultLon], 15);
-                }
-            }
-
-            function renderResults(list, total) {
-              const container = document.getElementById('results-list');
-              if (!container) return;
-              if (!list || list.length === 0) {
-                container.innerHTML = '<div class="muted" style="text-align:center; padding: 2rem;">No results found.</div>';
-                return;
-              }
-              const html = `
-                <div class="muted" style="margin-bottom:6px; padding: 0 0.5rem;">Total found: ${total}</div>
-                ${list.map((item, index) => {
-                  
-                  const lat = item.location ? item.location.lat : null;
-                  const lon = item.location ? item.location.lon : null;
-
-                  const services = Array.isArray(item.services) ? item.services : [];
-                  const payments = Array.isArray(item.payment_methods) ? item.payment_methods : [];
-                  const pillsS = services.map(s => `<span class="pill">${s}</span>`).join(' ');
-                  const pillsP = payments.map(s => `<span class="pill">${s}</span>`).join(' ');
-
-                  const animationDelay = `style="animation-delay: ${index * 50}ms"`;
-
-                  return `
-                    <div class="result-card" 
-                         id="result-card-${item.machine_id}"
-                         ${animationDelay} 
-                         onclick="panToMarker(${lat}, ${lon}, true, '${item.machine_id}')">
-                      
-                      <div class="card-header">
-                          <h4>${item.store_name || 'Unknown'} <span class="muted">#${item.machine_id}</span></h4>
-                          <button class="route-button" onclick="event.stopPropagation(); fetchRouteTo(${lat}, ${lon});">
-                              Get Directions
-                          </button>
-                      </div>
-
-                      <div class="muted">${item.address || ''} • ${item.campus || ''}</div>
-                      <div class="pill-container">
-                          ${pillsS} ${pillsP}
-                      </div>
-                    </div>
-                  `;
-                }).join('')}
-              `;
-              container.innerHTML = html;
-            }
-
-            async function runSearchAndShow() {
-              const formEl = document.getElementById('search-form');
-              const searchBtn = formEl.querySelector('button');
-              const resultsList = document.getElementById('results-list');
-              searchBtn.disabled = true;
-              
-              resultsList.innerHTML = `<div class="loading-container"><div class="loading-spinner"></div><div class="loading-text">Searching...</div></div>`;
-              
-              const qs  = buildSearchQuery();
-              const url = '/api/machines/search' + (qs ? ('?' + qs) : '');
-              try {
-                const resp = await fetch(url);
-                const data = await resp.json();
-                if (!resp.ok || !data.ok) {
-                  resultsList.innerHTML = `<div class="error-message">Search failed: ${data.error || 'Unknown error'}</div>`;
-                  return;
-                }
-                renderResults(data.results, data.total);
-                renderMapMarkers(data.results);
-                showTab('results');
-              } catch (e) {
-                resultsList.innerHTML = `<div class="error-message">Search error: ${e}</div>`;
-              } finally {
-                searchBtn.disabled = false;
-              }
-            }
 
             const formEl = document.getElementById('search-form');
             if (formEl) {
-              formEl.addEventListener('submit', function (e) {
-                e.preventDefault();
-                runSearchAndShow();
-              });
+                formEl.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    runSearchAndShow();
+                });
+            }
+
+            const voiceBtn = document.getElementById('voice-search-btn');
+            if (voiceBtn) {
+                voiceBtn.addEventListener('click', startVoiceRecognition);
             }
         };
     </script>
