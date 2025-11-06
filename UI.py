@@ -30,7 +30,7 @@ if not GEMINI_API_KEY:
 
 genai.configure(api_key=GEMINI_API_KEY)
 generation_config = {
-    "temperature": 0.2,
+    "temperature": 0.1, 
     "top_p": 1,
     "top_k": 1,
     "max_output_tokens": 2048,
@@ -43,9 +43,6 @@ gemini_model = genai.GenerativeModel(
 
 
 def es_search(payload: dict):
-    """
-    封装：POST _search
-    """
     url = f"{ES_URL}/{ES_INDEX}/_search"
     headers = {"Content-Type": "application/json"}
     resp = requests.post(
@@ -60,8 +57,6 @@ def es_search(payload: dict):
 
 @app.route("/api/machines/search", methods=["GET"])
 def machines_search():
-    """
-    """
     args = request.args
 
     try:
@@ -77,7 +72,7 @@ def machines_search():
         raw = args.get(name)
         if not raw:
             return []
-        return [x.strip().lower() for x in raw.split(",") if x.strip()]
+        return [x.strip() for x in raw.split(",") if x.strip()]
 
     services = parse_multi("services")
     payments = parse_multi("payment_methods")
@@ -91,32 +86,32 @@ def machines_search():
     q = args.get("q")
     must = []
     filters = []
+
     if q:
         must.append({
             "bool": {
                 "should": [
-                    {"match": {"store_name": {"query": q}}},
-                    {"match": {"address": {"query": q}}}
+                    {"match": {"store_name": {"query": q, "fuzziness": "AUTO"}}},
+                    {"match": {"address": {"query": q, "fuzziness": "AUTO"}}},
+                    {"match": {"provider": {"query": q, "fuzziness": "AUTO"}}}, 
+                    {"match": {"services": {"query": q, "fuzziness": "AUTO"}}}
                 ],
                 "minimum_should_match": 1
             }
         })
 
     if services:
-        filters.append({"terms": {"services": services}})
-
+        filters.append({"terms": {"services.keyword": services}})
     if payments:
-        filters.append({"terms": {"payment_methods": payments}})
-
+        filters.append({"terms": {"payment_methods.keyword": payments}})
     if providers:
-        filters.append({"terms": {"provider": providers}})
-
+        filters.append({"terms": {"provider.keyword": providers}})
     if campus:
-        filters.append({"term": {"campus": campus}})
+        filters.append({"term": {"campus.keyword": campus}})
     if zip_code:
-        filters.append({"term": {"zip": zip_code}})
+        filters.append({"term": {"zip.keyword": zip_code}})
     if status:
-        filters.append({"term": {"status": status}})
+        filters.append({"term": {"status.keyword": status}})
 
     if special_access is not None:
         val = special_access
@@ -140,9 +135,9 @@ def machines_search():
         "size": size,
         "query": query,
         "_source": [
-            "machine_id","store_name","address","city","zip","campus","status",
-            "special_access","rating","payment_methods","room_number",
-            "services","provider","location"
+            "machine_id", "store_name", "address", "city", "zip", "campus", "status",
+            "special_access", "rating", "payment_methods", "room_number",
+            "services", "provider", "location"
         ]
     }
 
@@ -238,39 +233,43 @@ def interpret_text():
         return {"ok": False, "error": "No query provided"}, 400
 
     prompt = f"""
-    You are a helpful search assistant for a vending machine finder app.
-    Convert the user's query into a JSON object matching the app filters.
+    You are a search assistant for a university vending machine app.
+    Your ONLY job is to convert spoken queries into a JSON object that EXACTLY matches our available filters.
 
     The user's query is: "{user_query}"
 
-    Available filter values:
+    ### STRICT Filter Values (Exact Spelling & Casing Required):
+    - services: ["drinks", "snacks"]
+    - provider: ["Coca Cola", "DASANI", "Vitamin", "Various"]
+    - payment_methods: ["Visa", "Apple Pay", "Discover", "MasterCard", "Google Pay", "AmEx", "Cash", "BuckID"]
+    - special_access: true or false
 
-    services: ["drinks", "snacks"]
-    payment_methods: ["visa","apple pay","discover","mastercard","google pay","amex","cash","buckid"]
-    provider: ["coca cola","dasani","vitamin water","various"]
-    special_access: true or false
+    ### Interpretation Rules (PRIORITY ORDER):
+    1. **Brand Names -> Provider (HIGHEST PRIORITY)**:
+       - IF the user says "Coke", "Coca-Cola", "Pepsi" -> MUST set {{"provider": ["Coca Cola"]}}
+       - IF "Dasani", "water" -> MUST set {{"provider": ["DASANI"]}}
+       - IF "Vitamin Water" -> MUST set {{"provider": ["Vitamin"]}}
+       
+    2. **General Categories -> Services**:
+       - ONLY if NO specific brand is mentioned.
+       - "I'm hungry", "snacks", "food" -> {{"services": ["snacks"]}}
+       - "I'm thirsty", "drink" (without brand) -> {{"services": ["drinks"]}}
 
-    Rules:
-    - Only return JSON, no explanation.
-    - If vague, return 
+    3. **Payment & Access**:
+       - "Apple Pay" -> {{"payment_methods": ["Apple Pay"]}}
+       - Dorm names (e.g., "Tower", "Hall") -> {{"special_access": true}}
 
-    JSON response:
+    ### Final JSON Output ONLY:
     """
 
     try:
         response = gemini_model.generate_content(f"{prompt}\n```json\n")
         raw = response.text.strip()
-
-        # Clean markdown formatting
         cleaned = raw.replace("```json", "").replace("```", "").strip()
         filters = json.loads(cleaned)
-
         return {"ok": True, "filters": filters}
-
     except Exception as e:
         print("Gemini Error:", e)
-        if "response" in locals():
-            print("Raw Gemini Response:", response.text)
         return {"ok": False, "error": f"Gemini API error: {e}"}, 502
 
 

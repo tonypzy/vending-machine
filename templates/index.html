@@ -590,7 +590,7 @@
                                         <div class="form-group">
                                             <h4>Providers</h4>
                                             <div class="checkbox-group">
-                                                {% for provider in ['Coca Cola','DASANI','Vitamin Water','Various'] %}
+                                                {% for provider in ['Coca Cola','DASANI','Vitamin','Various'] %}
                                                     <label><input type="checkbox" name="providers" value="{{ provider }}" {% if provider in selected_providers %}checked{% endif %}> {{ provider }}</label>
                                                 {% endfor %}
                                             </div>
@@ -835,11 +835,16 @@
 
         function buildSearchQuery() {
             const p = new URLSearchParams();
-            const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked')).map(i => i.value.toLowerCase());
+            
+            const pm = Array.from(document.querySelectorAll('input[name="choices"]:checked'))
+                .map(i => i.value); 
             if (pm.length) p.set('payment_methods', pm.join(','));
-            const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(i => i.value.toLowerCase());
+            const svcs = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+                .map(i => i.value.toLowerCase());
             if (svcs.length) p.set('services', svcs.join(','));
-            const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked')).map(i => i.value.toLowerCase());
+
+            const prov = Array.from(document.querySelectorAll('input[name="providers"]:checked'))
+                .map(i => i.value);
             if (prov.length) p.set('provider', prov.join(','));
             
             const sa = document.querySelector('input[name="special_access"]:checked');
