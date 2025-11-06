@@ -677,8 +677,9 @@
                 filters.payment_methods.forEach(val => setCheckbox('choices', val));
             }
             
+            // *** FIX IS HERE: CHANGED 'provider' to 'providers' ***
             if (filters.provider && Array.isArray(filters.provider)) {
-                filters.provider.forEach(val => setCheckbox('provider', val));
+                filters.provider.forEach(val => setCheckbox('providers', val));
             }
 
             if (typeof filters.special_access === 'boolean') {
