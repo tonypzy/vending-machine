@@ -7,4 +7,3 @@ gunicorn
 protobuf<5.0.0
 grpcio
 grpcio-status
-importlib-metadata
