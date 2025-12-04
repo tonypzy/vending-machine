@@ -4,3 +4,4 @@ python-dotenv
 google-generativeai
 polyline
 gunicorn
+protobuf<5.0.0
