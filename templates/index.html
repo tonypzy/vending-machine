@@ -509,7 +509,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* ================== START: CHATBOT CSS ================== */
         .chat-widget-button {
             position: fixed;
             bottom: 2rem;
@@ -550,7 +549,6 @@
             display: flex;
             flex-direction: column;
             
-            /* 隐藏/显示动画 */
             transform: scale(0.8);
             opacity: 0;
             visibility: hidden;
@@ -589,14 +587,14 @@
         }
 
         .chat-messages-container {
-            height: 300px;
-            overflow-y: auto;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;voiceBtn.addEventListener('click', startVoiceRecognition);
-            gap: 0.75rem;
-            background-color: var(--bg-light);
-        }
+    height: 300px;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column; /* Cleaned up */
+    gap: 0.75rem;
+    background-color: var(--bg-light);
+}
         .chat-message {
             padding: 0.75rem 1rem;
             border-radius: var(--radius-md);
@@ -647,7 +645,16 @@
             width: 20px;
             height: 20px;
         }
-        /* ================== END: CHATBOT CSS ================== */
+        .footer-note {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            background-color: #fff;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto; 
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
@@ -687,6 +694,7 @@
                 </div>
 
                 <div class="tab-content-container">
+                    
 
                     <div id="search-container" class="tab-content active" data-tab-content="search">
                         
@@ -763,6 +771,9 @@
                             <div class="muted" style="text-align:center; padding: 2rem;">Click Search to load results...</div>
                         </div>
                     </div>
+                </div>
+                <div class="footer-note">
+                    &copy; 2025 Vend-nier Project. Go Bucks!
                 </div>
             </div>
 
@@ -1309,5 +1320,6 @@
             </button>
         </form>
     </div>
+
 </body>
 </html>

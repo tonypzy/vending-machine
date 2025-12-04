@@ -1,5 +1,13 @@
-import google.generativeai as genai
-genai.configure(api_key="AIzaSyCWQaE8mBjc8x93wbXlgK1-pi4yJ3MzbnM")
+import os
+from dotenv import load_dotenv
 
-for m in genai.list_models():
-    print(m.name)
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from the environment
+CHATGPT_API_KEY = os.getenv("CHATGPT_API_KEY")
+
+if not CHATGPT_API_KEY:
+    raise ValueError("CHATGPT_API_KEY is not set. Please configure it in your environment.")
+
+# Use CHATGPT_API_KEY securely in your code

@@ -3,7 +3,7 @@
 <head>
     <title>About - Vend-nier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --osu-red: #8B0000;
@@ -27,9 +27,10 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             padding: 70px 2rem 2rem 2rem;
-            height: 100vh;
+            min-height: 100vh;
         }
 
+        /* --- Navbar (Unchanged) --- */
         .navbar {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -89,10 +90,11 @@
             color: var(--osu-red);
         }
 
+        /* --- Content Card --- */
         .content-card {
             background-color: #fff;
             color: var(--text-dark);
-            padding: 2rem 3rem;
+            padding: 3rem 4rem; /* Increased padding slightly for professional look */
             border-radius: var(--radius-lg);
             box-shadow: 0 8px 24px rgba(0,0,0,0.05);
             max-width: 900px;
@@ -102,21 +104,107 @@
         .content-card h1 {
             color: var(--osu-red);
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
             font-weight: 900;
+            font-size: 2.5rem;
         }
         .content-card h2 {
             color: var(--text-dark);
-             margin-top: 2rem;
-             margin-bottom: 1rem;
-             border-bottom: 1px solid var(--border-color);
-             padding-bottom: 0.5rem;
+             margin-top: 2.5rem;
+             margin-bottom: 1.5rem;
+             font-weight: 700;
+             font-size: 1.5rem;
         }
         .content-card p {
             margin-bottom: 1rem;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-light);
+        }
+
+        /* --- New Styling for Professional Layouts --- */
+        
+        /* Tech Tags */
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .tech-tag {
+            background-color: var(--osu-red-light);
+            color: var(--osu-red);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .team-member {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .team-member strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .team-member span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            margin-top: 4rem;
+            background-color: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .contact-box h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .btn-contact {
+            display: inline-block;
+            background-color: var(--osu-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(139, 0, 0, 0.2);
+        }
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(139, 0, 0, 0.3);
+            background-color: #720000; /* Slightly darker on hover */
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .content-card { padding: 2rem; }
+            .team-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -136,14 +224,54 @@
 
     <div class="content-card">
         <h1>About Vend-nier</h1>
-        <p>This project is designed to help students and staff at The Ohio State University find the nearest and most convenient vending machines.</p>
-        <p>Our goal is to provide real-time data on machine locations, services (drinks, snacks), and accepted payment methods (including BuckID).</p>
+        <p>This project is designed to help students, staff, and visitors at The Ohio State University locate the nearest and most convenient vending machines across campus.</p>
+        <p>Our goal is to provide real-time data on machine locations, specific services (drinks vs. snacks), and accepted payment methods (including BuckID) to save you time between classes.</p>
         
-        <h2>Team</h2>
-        <p>This project was developed as part of a course / team project at The Ohio State University. Our team members are Jasper Li, Allen Zhao, Lauren Clar, Zhengyang Peng.</p>
+        <h2>Technology Stack</h2>
+        <p>Vend-nier leverages a modern geospatial tech stack to deliver fast, accurate search results.</p>
+        <div class="tech-container">
+            <span class="tech-tag">Python (Flask)</span>
+            <span class="tech-tag">Elasticsearch</span>
+            <span class="tech-tag">Render Cloud</span>
+            
+            <span class="tech-tag">Google Gemini AI</span>
+            <span class="tech-tag">OpenAI ChatGPT</span>
+            
+            <span class="tech-tag">OpenRouteService</span>
+            <span class="tech-tag">Interactive Mapping</span>
+        </div>
 
-        <h2>Technology</h2>
-        <p>This application is built with Python (Flask) on the backend, Elasticsearch for data storage and geospatial search, and modern HTML/CSS/JavaScript with Leaflet.js on the frontend.</p>
+        <h2>Meet the Team</h2>
+        <p>This capstone project was developed by a dedicated team of students at The Ohio State University.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <strong>Jasper Li</strong>
+                <span>Developer</span>
+            </div>
+            <div class="team-member">
+                <strong>Allen Zhao</strong>
+                <span>Developer</span>
+            </div>
+            <div class="team-member">
+                <strong>Lauren Clar</strong>
+                <span>Developer</span>
+            </div>
+            <div class="team-member">
+                <strong>Zhengyang Peng</strong>
+                <span>Developer</span>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>Have questions or feedback?</h3>
+            <p>We are constantly looking to improve our data and user experience. If you spot a missing machine or a bug, please let us know.</p>
+            <a href="mailto:zhao.3896@osu.edu" class="btn-contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        &copy; 2025 Vend-nier Project. Go Bucks!
     </div>
 
 </body>
