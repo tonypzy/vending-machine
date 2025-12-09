@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>About - Vend-nier</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About the Vend-nier project - locating vending machines at OSU.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --osu-red: #8B0000;
             --osu-red-light: #fff8f8;
             --text-dark: #212529;
-            --text-light: #6c757d;
+            /* WCAG AA Compliant Gray */
+            --text-light: #4a4a4a; 
             --bg-light: #f8f9fa;
             --border-color: #e9ecef;
             --radius-md: 12px;
@@ -28,11 +31,12 @@
             color: var(--text-dark);
             padding: 70px 2rem 2rem 2rem;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- Navbar (Unchanged) --- */
         .navbar {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             height: 70px;
@@ -88,18 +92,21 @@
         }
         .nav-link:hover {
             color: var(--osu-red);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
         }
 
-        /* --- Content Card --- */
         .content-card {
             background-color: #fff;
             color: var(--text-dark);
-            padding: 3rem 4rem; /* Increased padding slightly for professional look */
+            padding: 3rem 4rem; 
             border-radius: var(--radius-lg);
             box-shadow: 0 8px 24px rgba(0,0,0,0.05);
             max-width: 900px;
+            width: 100%;
             margin: 2rem auto;
             line-height: 1.7;
+            flex: 1;
         }
         .content-card h1 {
             color: var(--osu-red);
@@ -122,9 +129,7 @@
             color: var(--text-light);
         }
 
-        /* --- New Styling for Professional Layouts --- */
-        
-        /* Tech Tags */
+        /* --- Tech Tags --- */
         .tech-container {
             display: flex;
             flex-wrap: wrap;
@@ -135,15 +140,15 @@
             color: var(--osu-red);
             padding: 0.4rem 1rem;
             border-radius: 50px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
-            border: 1px solid rgba(139, 0, 0, 0.1);
+            border: 1px solid rgba(139, 0, 0, 0.2);
         }
 
-        /* Team Grid */
+        /* --- Team Grid --- */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
             gap: 1.5rem;
             margin-top: 1rem;
         }
@@ -151,21 +156,36 @@
             background-color: var(--bg-light);
             padding: 1.5rem;
             border-radius: var(--radius-md);
-            text-align: center;
+            text-align: left;
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
         .team-member strong {
             display: block;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
+            color: var(--osu-red);
+            font-size: 1.2rem;
+            font-weight: 700;
         }
-        .team-member span {
-            font-size: 0.9rem;
-            color: var(--text-light);
+        .team-member-role {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        .team-member-desc {
+            font-size: 0.95rem;
+            color: var(--text-light); 
+            line-height: 1.5;
+            margin: 0;
         }
 
-        /* Contact Section */
+        /* --- Contact Section --- */
         .contact-box {
             margin-top: 4rem;
             background-color: var(--bg-light);
@@ -177,6 +197,8 @@
         .contact-box h3 {
             margin-bottom: 1rem;
             color: var(--text-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
         }
         .btn-contact {
             display: inline-block;
@@ -192,14 +214,19 @@
         .btn-contact:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(139, 0, 0, 0.3);
-            background-color: #720000; /* Slightly darker on hover */
+            background-color: #720000; 
+        }
+        .btn-contact:focus {
+            outline: 3px solid var(--text-dark);
+            outline-offset: 2px;
         }
         
         .footer-note {
             text-align: center;
-            margin-top: 3rem;
+            padding: 1.5rem;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.95rem; 
+            margin-top: auto;
         }
 
         @media (max-width: 600px) {
@@ -209,27 +236,27 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
         <div class="navbar-container">
-            <a href="/" class="navbar-logo">
+            <a href="/" class="navbar-logo" aria-label="Vend-nier Home">
                 <img src="{{ url_for('static', filename='vendnier_logo.png') }}" alt="Vend-nier Logo">
             </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/aboutus" class="nav-link">INFO</a>
+                    <a href="/aboutus" class="nav-link" aria-current="page">INFO</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="content-card">
+    <main class="content-card">
         <h1>About Vend-nier</h1>
         <p>This project is designed to help students, staff, and visitors at The Ohio State University locate the nearest and most convenient vending machines across campus.</p>
         <p>Our goal is to provide real-time data on machine locations, specific services (drinks vs. snacks), and accepted payment methods (including BuckID) to save you time between classes.</p>
         
         <h2>Technology Stack</h2>
         <p>Vend-nier leverages a modern geospatial tech stack to deliver fast, accurate search results.</p>
-        <div class="tech-container">
+        <div class="tech-container" aria-label="Technologies used">
             <span class="tech-tag">Python (Flask)</span>
             <span class="tech-tag">Elasticsearch</span>
             <span class="tech-tag">Render Cloud</span>
@@ -246,20 +273,32 @@
         
         <div class="team-grid">
             <div class="team-member">
-                <strong>Jasper Li</strong>
-                <span>Developer</span>
+                <strong>Allen Zhao</strong>
+                <span class="team-member-role">Full Stack & AI Engineer</span>
+                <p class="team-member-desc">
+                    Engineered the Text-to-Speech and Gemini LLM integrations. Spearheaded accessibility compliance (WCAG), optimized the final UI design, and managed cloud deployment on Render.
+                </p>
             </div>
             <div class="team-member">
-                <strong>Allen Zhao</strong>
-                <span>Developer</span>
+                <strong>Jasper Li</strong>
+                <span class="team-member-role">Backend & Data Engineer</span>
+                <p class="team-member-desc">
+                    Architected the Elasticsearch infrastructure and data pipelines. Led data cleaning and code refactoring efforts to ensure system scalability and maintainability.
+                </p>
             </div>
             <div class="team-member">
                 <strong>Lauren Clar</strong>
-                <span>Developer</span>
+                <span class="team-member-role">Software Engineer</span>
+                <p class="team-member-desc">
+                    Developed core navigation features using OpenRouteService and interactive mapping. Established the initial Flask backend architecture and led data collection efforts.
+                </p>
             </div>
             <div class="team-member">
                 <strong>Zhengyang Peng</strong>
-                <span>Developer</span>
+                <span class="team-member-role">AI Integration Specialist</span>
+                <p class="team-member-desc">
+                    Designed and implemented the conversational ChatBot using OpenAI's ChatGPT. Collaborated on backend service integration to enhance user interaction.
+                </p>
             </div>
         </div>
 
@@ -268,11 +307,11 @@
             <p>We are constantly looking to improve our data and user experience. If you spot a missing machine or a bug, please let us know.</p>
             <a href="mailto:zhao.3896@osu.edu" class="btn-contact">Contact Us</a>
         </div>
-    </div>
+    </main>
 
-    <div class="footer-note">
+    <footer class="footer-note">
         &copy; 2025 Vend-nier Project. Go Bucks!
-    </div>
+    </footer>
 
 </body>
 </html>
